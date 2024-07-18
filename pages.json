@@ -19,6 +19,25 @@
 		  {
 		    "navigationBarTitleText" : "个人主页"
 		  }
+		},
+		{
+		  "path" : "pages/index/components/Menu/components/dayNew",
+		  "name": "dayNew",
+		  "style" : 
+		  {
+		    "navigationBarTitleText" : "每日推荐"
+		  }
+		},
+		{
+		  "path" : "pages/index/components/Menu/components/rank",
+		  "name": "pages/index/components/Menu/components/rank",
+		  "style" : 
+		  {
+		    "navigationBarTitleText" : "排行榜",
+			"navigationBarBackgroundColor":"#f80e41",
+			"navigationBarTextStyle":"white"
+			
+		  }
 		}
 	],
 	"globalStyle": {
