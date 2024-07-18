@@ -3,12 +3,18 @@
   import Banner from './components/Banner/Banner.vue';
   import Menu from './components/Menu/Menu.vue';
 	const title = ref('网易云')
+  const sidebarFlag = ref(false)
+  const toLogin = () => {
+    uni.navigateTo({
+    	url: '/pages/login/login'
+    });
+  }
 </script>
 
 <template>
 	<view class="app">
     <view class="header">
-      <view class="head-icon"></view>
+      <view class="head-icon" @click="sidebarFlag=true"></view>
       <view class="head-search">
         <view class="head-search-icon"></view>
         <view>搜索</view>
@@ -17,6 +23,11 @@
     <Banner />
     <Menu />
 	</view>
+  <view @click="sidebarFlag=false" :class="['sidebar',{ 'sidebar-move': sidebarFlag }]">
+    <view class="sidebar-content">
+      <button @click.stop="toLogin">去登录</button>
+    </view>
+  </view>
 </template>
 
 <style lang="scss">
@@ -30,6 +41,7 @@
     justify-content: space-between;
     height: 80rpx;
     align-items: center;
+    margin-bottom: 20rpx;
   }
   .head-icon{
     display: inline-block;
@@ -56,5 +68,35 @@
     width: 50rpx;
     height: 50rpx;
     margin-right: 15rpx;
+  }
+  .sidebar{
+    position:fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-100%);
+    width: 200%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: transform .3s ,background .3s;
+  }
+  .sidebar-content{
+    background: white;
+    height: 100%;
+    width: 40%;
+    button{
+      position: absolute;
+      width: 150rpx;
+      height: 80rpx;
+      top: 95rpx;
+      left: 10rpx;
+      font-size: 14px;
+      line-height: 80rpx;
+      background-color: #f00;
+      color: #fff;
+    }
+  }
+  .sidebar-move{
+    transform: translate(0);
+    background: rgba(0, 0, 0, 0.5);
   }
 </style>
