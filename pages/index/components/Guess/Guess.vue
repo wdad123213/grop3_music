@@ -20,6 +20,7 @@
 				<view class="guepop">
 					<img :src="item.picUrl" alt=""/>
 					<view class="gueName">{{item.name}}</view>
+					<img src="../../../../assets/播放.png" alt="" style="width: 48rpx;height: 48rpx;"/>
 				</view>
 			</view>
 		</view>
@@ -36,22 +37,32 @@
 	}
 	.main{
 		display: flex;
+		/* justify-content: center; */
+		flex-direction: column;
+		margin: 40rpx 0 0;
+		height: 350rpx;
+		flex-wrap: wrap;
 		overflow-x: auto;
 		scrollbar-width:none;
 		.guepop{
 			margin: 10rpx;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			>img{
 				border-radius: 10rpx;
-				height: 240rpx;
-				width: 240rpx;
+				width: 90rpx;
+				height: 90rpx;
 			}
 			.gueName{
-				font-size: 24rpx;
+				padding-left: 20rpx;
+				width: 500rpx;
+				height: 80rpx;
+				font-size: 28rpx;
 				display: -webkit-box;
 				-webkit-box-orient: vertical;
 				-webkit-line-clamp: 2;
 				text-overflow: ellipsis;
-				height: 80rpx;
 				overflow: hidden;
 			}
 		}
