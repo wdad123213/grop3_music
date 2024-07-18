@@ -15,14 +15,8 @@ import {
 export function createApp() {
   const app = createSSRApp(App)
   app.use(Pinia.createPinia())
-  
-  
   app.use(Swipe)
   app.use(SwipeItem)
-  
-  
-  
-  
   return {
     app,
     Pinia

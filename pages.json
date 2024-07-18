@@ -20,10 +20,39 @@
 			}
 		},
 		{
-			"path": "pages/mine/mine",
-			"style": {
-				"navigationBarTitleText": "个人主页"
-			}
+		  "path" : "pages/mine/mine",
+		  "style" : 
+		  {
+		    "navigationBarTitleText" : "个人主页"
+		  }
+		},
+		{
+		  "path" : "pages/index/components/Menu/components/dayNew",
+		  "name": "dayNew",
+		  "style" : 
+		  {
+		    "navigationBarTitleText" : "每日推荐"
+		  }
+		},
+		{
+		  "path" : "pages/index/components/Menu/components/rank",
+		  "name": "pages/index/components/Menu/components/rank",
+		  "style" : 
+		  {
+		    "navigationBarTitleText" : "排行榜",
+			"navigationBarBackgroundColor":"#f80e41",
+			"navigationBarTextStyle":"white"
+			
+		  }
+		},
+		{
+		  "path" : "pages/login/login",
+		  "style" : 
+		  {
+		    "navigationBarTitleText" : "登录",
+			"navigationBarTextStyle": "white",
+			"navigationBarBackgroundColor": "#ff0000"
+		  }
 		},
 		{
 			"path": "pages/index/components/Search/Search",

@@ -48,9 +48,22 @@
 </script>
 
 <template>
+<<<<<<< HEAD
 	<uni-section>
 		<uni-search-bar v-model="searchValue" @input="getList" @confirm="push" placeholder="请输入歌手或歌曲名"
 		@cancel='exit'
+=======
+	<uni-section title="基本用法" type="line">
+		<uni-search-bar 
+		@confirm="search" 
+		:focus="true" 
+		v-model="searchValue" 
+		@blur="blur" 
+		@focus="focus" 
+		@input="input"
+		@cancel="cancel" 
+		@clear="clear"
+>>>>>>> main
 		>
 		</uni-search-bar>
 	</uni-section>
