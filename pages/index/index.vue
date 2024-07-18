@@ -6,7 +6,7 @@
 <template>
 	<view class="content">
 		<view class="text-area">
-			<text class="title">{{title}}</text>
+			<text class="title">{{ title }}</text>
 		</view>
 	</view>
 </template>
