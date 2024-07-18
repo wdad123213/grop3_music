@@ -2,9 +2,9 @@ import App from './App'
 import * as Pinia from 'pinia';
 import { createSSRApp } from 'vue'
 
-import { Swipe,
- SwipeItem,
- 
+import { 
+  Swipe,
+  SwipeItem
  } from 'vant';
 // 2. 引入组件样式
  import 'vant/lib/index.css';
