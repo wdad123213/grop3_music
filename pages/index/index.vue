@@ -2,14 +2,24 @@
   import { ref } from 'vue'
   import Banner from './components/Banner/Banner.vue';
   import Menu from './components/Menu/Menu.vue';
+<<<<<<< HEAD
   import System from './components/System/System.vue';
   
   
+=======
+  import Search from './components/Search/Search.vue'	
+>>>>>>> 271a408426724e8bcfce58ada026266a0ea3481e
 	const title = ref('网易云')
+	const go = () => {
+		uni.navigateTo({
+			url: '/pages/index/components/Search/Search'
+		});
+	}
 </script>
 
 <template>
 	<view class="app">
+<<<<<<< HEAD
 		
 		<view class="header">
 			
@@ -28,6 +38,17 @@
 		<Menu />
 		<System />
 	
+=======
+    <view class="header">
+      <view class="head-icon"></view>
+      <view class="head-search" @click="go">
+        <view class="head-search-icon"></view>
+        <view>搜索</view>
+      </view>
+    </view>
+    <Banner />
+    <Menu />
+>>>>>>> 271a408426724e8bcfce58ada026266a0ea3481e
 	</view>
 </template>
 
