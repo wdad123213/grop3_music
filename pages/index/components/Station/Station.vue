@@ -1,26 +1,25 @@
 <script setup>
 	import { ref } from "vue"
-	import { getReMVApi } from "../../../../servers";
+	import { getStationApi } from "../../../../servers";
 	
 	const list = ref([])
 	
-	const getReMV = async () => {
-		const res = await getReMVApi()
+	const getStation = async () => {
+		const res = await getStationApi()
 		list.value = res.data.result
 		// console.log(res,list.value);
 	}
-	getReMV()
+	getStation()
 </script>
-
 
 <template>
 	<view class="nav">
-		<view class="header">网易云音乐的雷达歌单</view>
+		<view class="header">专属场景歌单</view>
 		<view class="main">
-			<view class="reMV" v-for="(item,index) in list" :key="item.id">
-				<view class="remvpop">
+			<view class="Station" v-for="(item,index) in list" :key="item.id">
+				<view class="Stapop">
 					<img :src="item.picUrl" alt=""/>
-					<view class="remvName">{{item.copywriter}}</view>
+					<view class="StaName">{{item.copywriter}}</view>
 				</view>
 			</view>
 		</view>
@@ -39,7 +38,7 @@
 		display: flex;
 		overflow-x: auto;
 		scrollbar-width:none;
-		.remvpop{
+		.Stapop{
 			width: 260rpx;
 			margin: 10rpx;
 			>img{
@@ -47,7 +46,7 @@
 				height: 240rpx;
 				width: 240rpx;
 			}			
-			.remvName{
+			.StaName{
 				font-size: 24rpx;
 				display: -webkit-box;
 				-webkit-box-orient: vertical;
@@ -58,7 +57,7 @@
 			}
 		}
 	}
-	.reMV{
+	.Station{
 		display: flex;
 	}
 </style>

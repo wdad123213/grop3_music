@@ -5,6 +5,8 @@
   import System from './components/System/System.vue';
   import Guess from './components/Guess/Guess.vue';
   import ReMV from './components/ReMV/ReMV.vue';
+  import Station from './components/Station/Station.vue';
+  import Playsong from './components/Playsong/Playsong.vue';
   
 	const title = ref('网易云')
 </script>
@@ -30,6 +32,8 @@
 		<System />
 		<Guess />
 		<ReMV />
+		<Station />
+		<Playsong />
 	
 	</view>
 </template>

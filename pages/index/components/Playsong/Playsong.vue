@@ -1,26 +1,26 @@
 <script setup>
 	import { ref } from "vue"
-	import { getReMVApi } from "../../../../servers";
+	import { getPlaysongApi } from "../../../../servers";
 	
 	const list = ref([])
 	
-	const getReMV = async () => {
-		const res = await getReMVApi()
-		list.value = res.data.result
+	const getPlaysong = async () => {
+		const res = await getPlaysongApi()
+		list.value = res.data.playlists
 		// console.log(res,list.value);
 	}
-	getReMV()
+	getPlaysong()
+	
 </script>
-
 
 <template>
 	<view class="nav">
-		<view class="header">网易云音乐的雷达歌单</view>
+		<view class="header">精品歌单</view>
 		<view class="main">
-			<view class="reMV" v-for="(item,index) in list" :key="item.id">
-				<view class="remvpop">
-					<img :src="item.picUrl" alt=""/>
-					<view class="remvName">{{item.copywriter}}</view>
+			<view class="Playsong" v-for="(item,index) in list" :key="item.id">
+				<view class="Playpop">
+					<img :src="item.coverImgUrl" alt=""/>
+					<view class="PlayName">{{item.name}}</view>
 				</view>
 			</view>
 		</view>
@@ -39,7 +39,7 @@
 		display: flex;
 		overflow-x: auto;
 		scrollbar-width:none;
-		.remvpop{
+		.Playpop{
 			width: 260rpx;
 			margin: 10rpx;
 			>img{
@@ -47,7 +47,7 @@
 				height: 240rpx;
 				width: 240rpx;
 			}			
-			.remvName{
+			.PlayName{
 				font-size: 24rpx;
 				display: -webkit-box;
 				-webkit-box-orient: vertical;
@@ -58,7 +58,7 @@
 			}
 		}
 	}
-	.reMV{
+	.Playsong{
 		display: flex;
 	}
 </style>

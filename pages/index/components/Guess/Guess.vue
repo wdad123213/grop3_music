@@ -7,7 +7,7 @@
 	const getGuess = async () => {
 		const res = await getGuessApi()
 		list.value = res.data.result
-		console.log(res,list.value);
+		// console.log(res,list.value);
 	}
 	getGuess()
 </script>
@@ -25,7 +25,6 @@
 		</view>
 	</view>
 </template>
-
 
 <style scoped>
 	.nav{

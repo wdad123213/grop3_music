@@ -28,3 +28,11 @@ export const getGuessApi = () => {
 export const getReMVApi = () => {
   return request(`${host}/personalized/mv`)
 }
+// 推荐电台
+export const getStationApi = () => {
+  return request(`${host}/personalized/djprogram`)
+}
+// 获取精品歌单
+export const getPlaysongApi = () => {
+  return request(`${host}/top/playlist/highquality`)
+}
