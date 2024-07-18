@@ -13,12 +13,8 @@ const host = 'https://zyxcl.xyz/music/api'
 
 export const getBannerApi = () => {
   return request(`${host}/banner`)
-<<<<<<< HEAD
 }
 
 export const getSystemApi = () => {
   return request(`${host}/personalized`)
 }
-=======
-}
->>>>>>> 271a408426724e8bcfce58ada026266a0ea3481e

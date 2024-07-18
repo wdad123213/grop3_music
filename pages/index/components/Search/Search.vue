@@ -16,7 +16,6 @@
 		@input="input"
 		@cancel="cancel" 
 		@clear="clear"
-		
 		>
 		</uni-search-bar>
 	</uni-section>
