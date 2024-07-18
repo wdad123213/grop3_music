@@ -3,7 +3,8 @@
   import Banner from './components/Banner/Banner.vue';
   import Menu from './components/Menu/Menu.vue';
   import System from './components/System/System.vue';
-  
+  import Guess from './components/Guess/Guess.vue';
+  import ReMV from './components/ReMV/ReMV.vue';
   
 	const title = ref('网易云')
 </script>
@@ -27,6 +28,8 @@
 		<Banner />
 		<Menu />
 		<System />
+		<Guess />
+		<ReMV />
 	
 	</view>
 </template>

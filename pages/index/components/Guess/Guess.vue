@@ -1,30 +1,31 @@
 <script setup>
 	import { ref } from "vue"
-	import { getSystemApi } from "../../../../servers";
+	import { getGuessApi } from "../../../../servers";
 	
 	const list = ref([])
 	
-	const getSystem = async () => {
-		const res = await getSystemApi()
+	const getGuess = async () => {
+		const res = await getGuessApi()
 		list.value = res.data.result
-		// console.log(res,list.value);
+		console.log(res,list.value);
 	}
-	getSystem()
+	getGuess()
 </script>
 
 <template>
 	<view class="nav">
-		<view class="header">推荐歌单</view>
+		<view class="header">猜你喜欢的「华语」好歌</view>
 		<view class="main">
-			<view class="sysinfos" v-for="(item,index) in list" :key="item.id">
-				<view class="syspop">
+			<view class="guess" v-for="(item,index) in list" :key="item.id">
+				<view class="guepop">
 					<img :src="item.picUrl" alt=""/>
-					<view class="sysName">{{item.name}}</view>
+					<view class="gueName">{{item.name}}</view>
 				</view>
 			</view>
 		</view>
 	</view>
 </template>
+
 
 <style scoped>
 	.nav{
@@ -38,14 +39,14 @@
 		display: flex;
 		overflow-x: auto;
 		scrollbar-width:none;
-		.syspop{
+		.guepop{
 			margin: 10rpx;
 			>img{
 				border-radius: 10rpx;
 				height: 240rpx;
 				width: 240rpx;
 			}
-			.sysName{
+			.gueName{
 				font-size: 24rpx;
 				display: -webkit-box;
 				-webkit-box-orient: vertical;
@@ -56,7 +57,7 @@
 			}
 		}
 	}
-	.sysinfos{
+	.guess{
 		display: flex;
 	}
 </style>

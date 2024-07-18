@@ -1,25 +1,26 @@
 <script setup>
 	import { ref } from "vue"
-	import { getSystemApi } from "../../../../servers";
+	import { getReMVApi } from "../../../../servers";
 	
 	const list = ref([])
 	
-	const getSystem = async () => {
-		const res = await getSystemApi()
+	const getReMV = async () => {
+		const res = await getReMVApi()
 		list.value = res.data.result
-		// console.log(res,list.value);
+		console.log(res,list.value);
 	}
-	getSystem()
+	getReMV()
 </script>
+
 
 <template>
 	<view class="nav">
-		<view class="header">推荐歌单</view>
+		<view class="header">网易云音乐的雷达歌单</view>
 		<view class="main">
-			<view class="sysinfos" v-for="(item,index) in list" :key="item.id">
-				<view class="syspop">
+			<view class="reMV" v-for="(item,index) in list" :key="item.id">
+				<view class="remvpop">
 					<img :src="item.picUrl" alt=""/>
-					<view class="sysName">{{item.name}}</view>
+					<view class="remvName">{{item.copywriter}}</view>
 				</view>
 			</view>
 		</view>
@@ -38,14 +39,15 @@
 		display: flex;
 		overflow-x: auto;
 		scrollbar-width:none;
-		.syspop{
+		.remvpop{
+			width: 260rpx;
 			margin: 10rpx;
 			>img{
 				border-radius: 10rpx;
 				height: 240rpx;
 				width: 240rpx;
-			}
-			.sysName{
+			}			
+			.remvName{
 				font-size: 24rpx;
 				display: -webkit-box;
 				-webkit-box-orient: vertical;
@@ -56,7 +58,7 @@
 			}
 		}
 	}
-	.sysinfos{
+	.reMV{
 		display: flex;
 	}
 </style>
