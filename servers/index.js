@@ -15,14 +15,14 @@ export const getBannerApi = () => {
   return request(`${host}/banner`)
 }
 
-<<<<<<< HEAD
+
 export const getSearchApi = (key) => {
   return request(`${host}/cloudsearch?keywords=${key}`)
 }
 export const getSearchHotApi = (key) => {
   return request(`${host}/search/hot`)
 }
-=======
+
 // 排行榜
 export const getRankApi = ()=>{
 	return request(`${host}/toplist/detail`)
@@ -50,4 +50,3 @@ export const getPlaysongApi = () => {
   return request(`${host}/top/playlist/highquality`)
 }
 
->>>>>>> main
