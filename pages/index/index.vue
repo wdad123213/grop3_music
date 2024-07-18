@@ -1,9 +1,15 @@
 <script setup>
   import { ref } from 'vue'
-  import Banner from './components/Banner/Banner.vue';
-  import Menu from './components/Menu/Menu.vue';
-	const title = ref('网易云')
+  
+  import Banner from './components/Banner/Banner.vue'
+  import Menu from './components/Menu/Menu.vue'
+  import System from './components/System/System.vue'
   const sidebarFlag = ref(false)
+	const go = () => {
+		uni.navigateTo({
+			url: '/pages/index/components/Search/Search'
+		});
+	}
   const toLogin = () => {
     uni.navigateTo({
     	url: '/pages/login/login'
@@ -15,13 +21,15 @@
 	<view class="app">
     <view class="header">
       <view class="head-icon" @click="sidebarFlag=true"></view>
-      <view class="head-search">
+		  <view class="head-search" @click="go">
         <view class="head-search-icon"></view>
         <view>搜索</view>
-      </view>
-    </view>
-    <Banner />
-    <Menu />
+		  </view>
+		</view>
+	
+		<Banner />
+		<Menu />
+		<System />
 	</view>
   <view @click="sidebarFlag=false" :class="['sidebar',{ 'sidebar-move': sidebarFlag }]">
     <view class="sidebar-content">
