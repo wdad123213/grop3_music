@@ -2,14 +2,20 @@
   import { ref } from 'vue'
   import Banner from './components/Banner/Banner.vue';
   import Menu from './components/Menu/Menu.vue';
+  import Search from './components/Search/Search.vue'	
 	const title = ref('网易云')
+	const go = () => {
+		uni.navigateTo({
+			url: '/pages/index/components/Search/Search'
+		});
+	}
 </script>
 
 <template>
 	<view class="app">
     <view class="header">
       <view class="head-icon"></view>
-      <view class="head-search">
+      <view class="head-search" @click="go">
         <view class="head-search-icon"></view>
         <view>搜索</view>
       </view>
