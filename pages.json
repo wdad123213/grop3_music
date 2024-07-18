@@ -28,7 +28,6 @@
 		"backgroundColor": "#F8F8F8"
 	},
   "tabBar": {
-    "iconfontSrc":"static/iconfont.ttf",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -40,7 +39,8 @@
           "color": "#000000",
           "selectedColor": "#0000ff"
         }
-      },{
+      },
+      {
         "pagePath": "pages/mine/mine",
         "text": "我的",
         "iconfont": {
