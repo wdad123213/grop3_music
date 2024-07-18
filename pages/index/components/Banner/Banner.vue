@@ -15,20 +15,22 @@
 </script>
 
 <template>
-<van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-  <van-swipe-item v-for="(item,index) in users" :key="index" ><img :src="item.imageUrl" style="width: 375px;"/></van-swipe-item>
-</van-swipe>
+	<van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+	  <van-swipe-item v-for="(item,index) in users" :key="index" ><img :src="item.imageUrl" /></van-swipe-item>
+	</van-swipe>
 </template>
-
 
 <style lang="scss">
   .my-swipe .van-swipe-item {
     color: #fff;
-    font-size: 20px;
-	height: 139px;
-    line-height: 139px;
+	width: 100%;
+    font-size: 40rpx;
     text-align: center;
-    background-color: #39a9ed;
+	display: flex;
+	align-items: center;
+	::v-deep img{
+		width: 100%;
+	}
   }
 
 </style>
