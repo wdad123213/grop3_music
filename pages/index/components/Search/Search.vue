@@ -23,7 +23,7 @@
 </template>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.search-result {
 		padding-top: 10px;
 		padding-bottom: 20px;
