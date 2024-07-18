@@ -1,25 +1,31 @@
 <script setup>
   import { ref } from 'vue'
+  import Banner from './components/Banner/Banner.vue';
+  import Menu from './components/Menu/Menu.vue';
 	const title = ref('网易云')
 </script>
 
 <template>
-	<view class="content">
-		<view class="text-area">
-			<text class="title">{{ title }}</text>
-		</view>
+	<view class="app">
+    <view class="header">
+      <view class="head-icon">图标</view>
+      <view class="head-search">搜索</view>
+    </view>
+    <Banner />
+    <Menu />
 	</view>
 </template>
 
-<style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
+<style lang="scss">
+	.app{
+    display: flex;
+    flex-direction: column;
+  }
+  .header{
+    display: flex;
+    justify-content: space-between;
+  }
+  .head-search{
+    flex: 1;
+  }
 </style>
