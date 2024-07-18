@@ -15,6 +15,11 @@ export const getBannerApi = () => {
   return request(`${host}/banner`)
 }
 
+// 排行榜
+export const getRankApi = ()=>{
+	return request(`${host}/toplist/detail`)
+}
+
 // 推荐歌单
 export const getSystemApi = () => {
   return request(`${host}/personalized`)
@@ -36,3 +41,4 @@ export const getStationApi = () => {
 export const getPlaysongApi = () => {
   return request(`${host}/top/playlist/highquality`)
 }
+
