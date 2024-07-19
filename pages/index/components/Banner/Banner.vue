@@ -13,32 +13,34 @@
   
   
 </script>
-
 <template>
-	<van-swipe class="my-swipe" :autoplay="3000" indicator-color="white" >
-	  <van-swipe-item v-for="(item,index) in users" :key="index" ><img :src="item.imageUrl" /></van-swipe-item>
-	</van-swipe>
+	<view class="uni-margin-wrap">
+		<swiper class="swiper" circular :indicator-dots="true" indicator-active-color="#fff" autoplay>
+			<swiper-item  v-for="(item,index) in users" :key="index" >
+				<view class="swiper-item uni-bg-red"><img :src="item.imageUrl" /></view>
+			</swiper-item>
+		</swiper>
+	</view>
 </template>
 
 <style lang="scss">
-	.my-swipe{
+		
+	
+	.swiper{
 		border-radius: 30rpx;
 		overflow: hidden;
 		margin: 60rpx 0;
-	}
-  .my-swipe .van-swipe-item {
-	// border-radius: 30rpx;
-	// overflow: hidden;
-    color: #fff;
-	width: 100%;
-    font-size: 40rpx;
-    text-align: center;
-	display: flex;
-	align-items: center;
-
-	::v-deep img{
+		color: #fff;
 		width: 100%;
-	}
-  }
+		font-size: 40rpx;
+		text-align: center;
+		display: flex;
+		align-items: center;
+
+		::v-deep img{
+			width: 100%;
+			height: 300rpx;
+		}
+	  }
 
 </style>

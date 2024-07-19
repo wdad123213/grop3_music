@@ -12,9 +12,11 @@
   
 
   const sidebarFlag = ref(false)
+  const loginInfo = ref(false)
+  const userInfo = ref({})
 	const go = () => {
 		uni.navigateTo({
-			url: '/pages/index/components/Search/Search'
+			url: '/pages/search/search'
 		});
 	}
   const toLogin = () => {
@@ -22,6 +24,20 @@
     	url: '/pages/login/login'
     });
   }
+  const isLogin = () => {
+    if(localStorage.getItem('logined')) {
+      loginInfo.value = false
+    }else{
+      loginInfo.value = true
+    }
+  }
+  isLogin()
+  const getUser = async() => {
+    const res = await getLoginApi()
+    userInfo.value.name = res.data.data.profile?.nickname
+    userInfo.value.img = res.data.data.profile?.avatarUrl
+  }
+  getUser()
 </script>
 
 <template>
@@ -40,12 +56,15 @@
 		<ReMV />
 		<Station />
 		<Playsong />
-        <Bottom/>
+    <Bottom/>
 	</view>
   <view @click="sidebarFlag=false" :class="['sidebar',{ 'sidebar-move': sidebarFlag }]">
     <view class="sidebar-content">
-      
-      <button @click.stop="toLogin">去登录</button>
+      <button @click.stop="toLogin" v-if="loginInfo">去登录</button>
+      <view class="user" v-else>
+        <image :src="userInfo.img" mode=""></image>
+        {{userInfo.name}}
+      </view>
     </view>
   </view>
   
@@ -114,6 +133,25 @@
       line-height: 80rpx;
       background-color: #f00;
       color: #fff;
+    }
+  }
+  .user{
+    position: absolute;
+    width: 40%;
+    height: 120rpx;
+    top: 90rpx;
+    left: 0;
+    font-size: 14px;
+    background-color: #ccc;
+    color: #000;
+    display: flex;
+    align-items: center;
+    image{
+      width: 100rpx;
+      height: 100rpx;
+      background: #f00;
+      border-radius: 50%;
+      margin: 10rpx;
     }
   }
   .sidebar-move{

@@ -6,7 +6,7 @@
 	import {
 		getSearchApi,
 		getSearchHotApi
-	} from "../../../../servers";
+	} from "../../servers";
 	const searchValue = ref('')
 	const searchList = ref([])
 	const hotValue = ref([])

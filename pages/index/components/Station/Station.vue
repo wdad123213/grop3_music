@@ -60,4 +60,7 @@
 	.Station{
 		display: flex;
 	}
+	.main::-webkit-scrollbar{
+		display: none;
+	}
 </style>

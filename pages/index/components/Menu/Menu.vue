@@ -2,10 +2,10 @@
   import { ref } from "vue"
 
 const menuTb = ref([
-	{names:"每日推荐",img:"https://p1.music.126.net/4DpSgAVpJny4Ewf-Xw_WQQ==/109951163986641971.jpg",url:"/pages/index/components/Menu/components/dayNew"},
-	{names:"私人FM",img:"https://p1.music.126.net/Shi7cRT1bDhwpVDM7AOFXg==/109951165265330616.jpg",url:"/pages/index/components/Menu/components/priv"},
-	{names:"歌单",img:"https://p1.music.126.net/uG5p6CnwAHrLqOkaSeRlnA==/109951163986649164.jpg",url:"/pages/index/components/songSheet/songSheet"},
-	{names:"排行榜",img:"https://p1.music.126.net/SDFC6A3X2wzUCavYyeGIOg==/109951163986649670.jpg", url:"/pages/index/components/Menu/components/rank"},
+	{names:"每日推荐",img:"https://p1.music.126.net/4DpSgAVpJny4Ewf-Xw_WQQ==/109951163986641971.jpg"},
+	{names:"私人FM",img:"https://p1.music.126.net/Shi7cRT1bDhwpVDM7AOFXg==/109951165265330616.jpg",url:"/pages/priv/priv"},
+	{names:"歌单",img:"https://p1.music.126.net/uG5p6CnwAHrLqOkaSeRlnA==/109951163986649164.jpg"},
+	{names:"排行榜",img:"https://p1.music.126.net/SDFC6A3X2wzUCavYyeGIOg==/109951163986649670.jpg", url:"/pages/rank/rank"},
 	{names:"有声书",img:"https://p1.music.126.net/Kb4oK0m_ocs3FR3lo-r9yg==/109951167319110429.jpg"},
 	{names:"数字专辑",img:"https://p1.music.126.net/nRWhsf3P7r7eqHz-v61VBg==/109951166989045593.jpg"},
 	{names:"直播",img:"https://p1.music.126.net/2JvVZZjcjyCE72fGMsC1hg==/109951166989043011.jpg"},
@@ -21,66 +21,46 @@ function tobar(e){
 }
 
 
-
-
 </script>
 
 <template>
 	
   <view>
-	<scroll-view class="scroll-view_H" scroll-x  scroll-left="120" show-scrollbar style=" white-space: nowrap;display: flex; align-items: center;">
+
+
+	<view class="scroll-view_H">
 		<view  class="scroll-view-item_H"  v-for="(item,i) in menuTb" :id="i" @click="tobar(item.url)">
 			<img :src="item.img" alt="" />
 			<span>{{item.names}}</span>
 		</view>
-	</scroll-view>
-    
+	</view>
+	
   </view>
   
 </template>
 
 <style lang="scss" scoped>
 .scroll-view_H {
-	white-space: nowrap;
-	width: 100%;
-	height: 20%;
-	padding-bottom: 40rpx;
-	margin-bottom: 20rpx;
+	height: 160rpx;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	overflow-x: auto;
 }
-.uni-scroll-view::-webkit-scrollbar {
-   display: none;
-}
-// .uni-scroll-view::-webkit-scrollbar-thumb:hover {
-//   background: transparent; /* 设置滚动条实际可拖动部分的背景色为透明 */
-// }
-
-// .uni-scroll-view::-webkit-scrollbar-track {
-//   background: transparent; /* 设置滚动条轨道的背景色为透明 */
-// }
-// .uni-scroll-view::-webkit-scrollbar-thumb:hover {
-//     background-color: #aaa;
-// }
 
 .scroll-view-item_H {
-	display: inline-block;
-	width: 140rpx;
-	height: 100rpx;
-	line-height: 80rpx;
-	text-align: center;
-	font-size: 36rpx;
-	
 	img{
-		background: red;
-		height: 60rpx;
-		width: 60rpx;
+		width: 80rpx;
+		height: 80rpx;
 		border-radius: 50%;
-		display: flex;
-		margin: 20rpx 0 0 40rpx;
-		
+		margin: 0 30rpx;
+		background-color: #C84341;	
 	}
 	span{
 		font-size: 24rpx;
 	}
 }
-
+	.scroll-view_H::-webkit-scrollbar{
+		display: none;
+	}
 </style>
