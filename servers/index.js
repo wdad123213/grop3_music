@@ -16,6 +16,14 @@ export const getBannerApi = () => {
   return request(`${host}/banner?cookie=${cookies}`)
 }
 
+
+export const getSearchApi = (key) => {
+  return request(`${host}/cloudsearch?keywords=${key}`)
+}
+export const getSearchHotApi = (key) => {
+  return request(`${host}/search/hot`)
+}
+
 // 排行榜
 export const getRankApi = ()=>{
 	return request(`${host}/toplist/detail`)
@@ -42,6 +50,11 @@ export const getStationApi = () => {
 export const getPlaysongApi = () => {
   return request(`${host}/top/playlist/highquality?cookie=${cookies}`)
 }
+//歌单
+export const getPlaylistApi = (id) => {
+  return request(`${host}/playlist/detail?id=${id}`)
+}
+
 
 // 邮箱登录
 export const emailLoginApi = ( params ) => {

@@ -16,7 +16,7 @@
 	<view class="nav">
 		<view class="header">猜你喜欢的「华语」好歌</view>
 		<view class="main">
-			<view class="guess" v-for="(item,index) in list" :key="item.id">
+			<view class="guess" v-for="(item,index) in list" :key="item.id" >
 				<view class="guepop">
 					<img :src="item.picUrl" alt=""/>
 					<view class="gueName">{{item.name}}</view>

@@ -16,7 +16,7 @@
 	<view class="nav">
 		<view class="header">专属场景歌单</view>
 		<view class="main">
-			<view class="Station" v-for="(item,index) in list" :key="item.id">
+			<view class="Station" v-for="(item,index) in list" :key="item.id" >
 				<view class="Stapop">
 					<img :src="item.picUrl" alt=""/>
 					<view class="StaName">{{item.copywriter}}</view>

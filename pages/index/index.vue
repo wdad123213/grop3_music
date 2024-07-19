@@ -7,8 +7,10 @@
   import ReMV from './components/ReMV/ReMV.vue';
   import Station from './components/Station/Station.vue';
   import Playsong from './components/Playsong/Playsong.vue';
+  import Bottom from './components/Bottom/Bottom.vue'
   import { getLoginApi } from '../../servers';
   
+
   const sidebarFlag = ref(false)
   const loginInfo = ref(false)
   const userInfo = ref({})
@@ -47,7 +49,6 @@
         <view>搜索</view>
 		  </view>
 		</view>
-	
 		<Banner />
 		<Menu />
 		<System />
@@ -55,6 +56,7 @@
 		<ReMV />
 		<Station />
 		<Playsong />
+        <Bottom/>
 	</view>
   <view @click="sidebarFlag=false" :class="['sidebar',{ 'sidebar-move': sidebarFlag }]">
     <view class="sidebar-content">
@@ -65,6 +67,7 @@
       </view>
     </view>
   </view>
+  
 </template>
 
 <style lang="scss">

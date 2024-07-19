@@ -9,15 +9,22 @@
 		list.value = res.data.result
 		// console.log(res,list.value);
 	}
+	const songApi=(id)=>{
+		console.log(id)
+		uni.navigateTo({
+			  url:`/pages/index/components/songSheet/songSheet?id=${id}`,
+			  })
+	}
+	
 	getReMV()
 </script>
 
 
 <template>
-	<view class="nav">
+	<view class="nav" >
 		<view class="header">网易云音乐的雷达歌单</view>
 		<view class="main">
-			<view class="reMV" v-for="(item,index) in list" :key="item.id">
+			<view class="reMV" v-for="(item,index) in list" :key="item.id"  @click="songApi(item.id)">
 				<view class="remvpop">
 					<img :src="item.picUrl" alt=""/>
 					<view class="remvName">{{item.copywriter}}</view>
