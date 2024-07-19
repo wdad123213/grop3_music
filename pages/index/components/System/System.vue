@@ -13,7 +13,7 @@
 	const songApi=(id)=>{
 		console.log(id)
 		uni.navigateTo({
-			  url:`/pages/index/components/songSheet/songSheet?id=${id}`,
+			  url:`/pages/songSheet/songSheet?id=${id}`,
 			  })
 	}
 	getSystem()

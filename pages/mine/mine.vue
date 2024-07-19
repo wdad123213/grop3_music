@@ -27,31 +27,31 @@
   }
   isLogin()
   
-    const loginStatus = async() => {
-		
-	    const res = await getLoginApi()
-	    list.value = res.data.data.profile
-		
-		const id = list.value.userId
-		// console.log(id);
-	    const res2 = await getUserfollApi(id)
-		list2.value = res2.data.follow
-	
-	    const res3 = await getUserfolledApi(id)
-		list3.value = res3.data.followeds
-		
-		const res4 = await getUserlevelApi(id)
-		list4.value = res4.data.data.level
-		
-		const res5 = await getUserdetailApi(id)
-		list5.value = res5.data.listenSongs
+  const loginStatus = async() => {
+  
+  const res = await getLoginApi()
+  list.value = res.data.data.profile
+  
+  const id = list.value.userId
+  // console.log(id);
+  const res2 = await getUserfollApi(id)
+  list2.value = res2.data.follow
 
-		const res6 = await getUserplaylistApi(id)
-		list6.value = res6.data.playlist
-		
-	    // console.log(list6.value)
-    }
+  const res3 = await getUserfolledApi(id)
+  list3.value = res3.data.followeds
+  
+  const res4 = await getUserlevelApi(id)
+  list4.value = res4.data.data.level
+  
+  const res5 = await getUserdetailApi(id)
+  list5.value = res5.data.listenSongs
+
+  const res6 = await getUserplaylistApi(id)
+  list6.value = res6.data.playlist
+  
+  }
   loginStatus()
+  
 </script>
 
 <template>
@@ -59,15 +59,15 @@
     <view class="my-music">我的音乐</view>
     <view class="my-login" @click="toLogin">去登录</view>
   </view>
-  <view class="logined" :style="{backgroundImage:`url(${list.backgroundUrl})`}">
+  <view class="logined" v-else :style="{backgroundImage:`url(${list.backgroundUrl})`}">
 	  <!-- header -->
     <view class="header" 
-	style="
-	width: 100%;
-	text-align: center;"
-	>
+      style="
+      width: 100%;
+      text-align: center;"
+    >
 		<!-- 头像 -->
-    	<img :src="list.avatarUrl" alt=""  style="width: 200rpx;height: 200rpx;border-radius: 50%;"/>
+    <image :src="list.avatarUrl" alt=""  style="width: 200rpx;height: 200rpx;border-radius: 50%;"/>
 		<!-- 姓名 -->
 		<view class="toname" style="margin: 40rpx 0;">{{list.nickname}}</view>
 		<!-- 关注 粉丝 等级 听歌 -->

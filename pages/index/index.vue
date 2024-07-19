@@ -16,7 +16,7 @@
   const userInfo = ref({})
 	const go = () => {
 		uni.navigateTo({
-			url: '/pages/index/components/Search/Search'
+			url: '/pages/search/search'
 		});
 	}
   const toLogin = () => {
@@ -34,8 +34,8 @@
   isLogin()
   const getUser = async() => {
     const res = await getLoginApi()
-    userInfo.value.name = res.data.data.profile.nickname
-    userInfo.value.img = res.data.data.profile.avatarUrl
+    userInfo.value.name = res.data.data.profile?.nickname
+    userInfo.value.img = res.data.data.profile?.avatarUrl
   }
   getUser()
 </script>
@@ -56,7 +56,7 @@
 		<ReMV />
 		<Station />
 		<Playsong />
-        <Bottom/>
+    <Bottom/>
 	</view>
   <view @click="sidebarFlag=false" :class="['sidebar',{ 'sidebar-move': sidebarFlag }]">
     <view class="sidebar-content">
