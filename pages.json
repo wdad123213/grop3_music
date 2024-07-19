@@ -27,14 +27,6 @@
 		  }
 		},
 		{
-		  "path" : "pages/index/components/Menu/components/dayNew",
-		  "name": "dayNew",
-		  "style" : 
-		  {
-		    "navigationBarTitleText" : "每日推荐"
-		  }
-		},
-		{
 		  "path" : "pages/index/components/Menu/components/rank",
 		  "name": "pages/index/components/Menu/components/rank",
 		  "style" : 

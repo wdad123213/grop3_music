@@ -1,3 +1,4 @@
+
 export const request = (url, options = {}) => {
   return new Promise((resolve, reject) => {
     uni.request({
@@ -11,6 +12,7 @@ export const request = (url, options = {}) => {
 
 const host = 'https://zyxcl.xyz/music/api'
 
+// 轮播图
 export const getBannerApi = () => {
   return request(`${host}/banner`)
 }
@@ -41,4 +43,3 @@ export const getStationApi = () => {
 export const getPlaysongApi = () => {
   return request(`${host}/top/playlist/highquality`)
 }
-
