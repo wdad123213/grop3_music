@@ -49,7 +49,7 @@
 		const res6 = await getUserplaylistApi(id)
 		list6.value = res6.data.playlist
 		
-	    console.log(list6.value)
+	    // console.log(list6.value)
     }
   loginStatus()
 </script>
