@@ -66,14 +66,14 @@
 		"list": [{
 				"pagePath": "pages/index/index",
 				"text": "发现",
-				"iconPath": "assets/explore.png",
-				"selectedIconPath": "assets/explore1.png"
+				// "iconPath": "assets/explore.png",
+				// "selectedIconPath": "assets/explore1.png"
 			},
 			{
 				"pagePath": "pages/mine/mine",
 				"text": "我的",
-				"iconPath": "assets/mine.png",
-				"selectedIconPath": "assets/mine1.png"
+				// "iconPath": "assets/mine.png",
+				// "selectedIconPath": "assets/mine1.png"
 			}
 		]
 	},
