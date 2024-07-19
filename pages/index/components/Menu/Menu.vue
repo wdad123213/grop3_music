@@ -27,12 +27,12 @@ function tobar(e){
 	
   <view>
 
-	<scroll-view class="scroll-view_H" scroll-x  scroll-left="120" show-scrollbar="false" style="display: flex; align-items: center;">
+	<view class="scroll-view_H">
 		<view  class="scroll-view-item_H"  v-for="(item,i) in menuTb" :id="i" @click="tobar(item.url)">
 			<img :src="item.img" alt="" />
 			<span>{{item.names}}</span>
 		</view>
-	</scroll-view>
+	</view>
 	
   </view>
   
@@ -40,32 +40,25 @@ function tobar(e){
 
 <style lang="scss" scoped>
 .scroll-view_H {
-	white-space: nowrap;
-	width: 100%;
-	height: 20%;
-	padding-bottom: 40rpx;
-	margin-bottom: 20rpx;
+	height: 160rpx;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	overflow-x: auto;
 }
 .scroll-view-item_H {
-	display: inline-block;
-	width: 140rpx;
-	height: 100rpx;
-	line-height: 80rpx;
-	text-align: center;
-	font-size: 36rpx;
 	img{
-		background: red;
-		height: 60rpx;
-		width: 60rpx;
+		width: 80rpx;
+		height: 80rpx;
 		border-radius: 50%;
-		display: flex;
-		margin: 20rpx 0 0 30rpx;
-		
-		
+		margin: 0 30rpx;
+		background-color: #C84341;	
 	}
 	span{
 		font-size: 24rpx;
 	}
 }
-
+	.scroll-view_H::-webkit-scrollbar{
+		display: none;
+	}
 </style>
