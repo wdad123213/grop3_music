@@ -61,14 +61,35 @@
 		  "style" : 
 		  {
 		    "navigationBarTitleText" : "登录",
+<<<<<<< HEAD
+        "navigationBarTextStyle": "white",
+        "navigationBarBackgroundColor": "#C84341"
+=======
 			"navigationBarTextStyle": "white",
 			"navigationBarBackgroundColor": "#ff0000"
+>>>>>>> main
 		  }
 		},
 		{
 			"path": "pages/index/components/Search/Search",
 			"style": {
 				"navigationBarTitleText": "搜索",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#C84341"
+			}
+		},
+		{
+			"path": "pages/index/components/Player/Player",
+			"style": {
+				"navigationBarTitleText": "播放器",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#C84341"
+			}
+		},
+		{
+			"path": "pages/index/components/Bottom/Bottom",
+			"style": {
+				"navigationBarTitleText": "底部播放缩略",
 				"navigationBarTextStyle": "white",
 				"navigationBarBackgroundColor": "#C84341"
 			}
