@@ -54,7 +54,11 @@ export const getPlaysongApi = () => {
 export const getPlaylistApi = (id) => {
   return request(`${host}/playlist/detail?id=${id}`)
 }
-
+//歌单评论
+export const getSongListApi = (id)=>{
+	return request(`${host}/comment/playlist?id=${id}`)
+	
+}
 
 // 邮箱登录
 export const emailLoginApi = ( params ) => {
@@ -76,3 +80,4 @@ export const getQRCheckApi = (key) => {
 export const getLoginApi = () => {
   return request(`${host}/login/status?cookie=${cookies}`)
 }
+

@@ -1,19 +1,49 @@
 <script setup>
 	import { ref } from 'vue';
-	import { getPlaylistApi } from "@/servers/index.js"
+	import { getPlaylistApi,getSongListApi } from "@/servers/index.js"
+	import { onLoad } from '@dcloudio/uni-app'
+	
 	
 	const songlist =ref([])
+	
 	const ids = ref('')
-
-	ids.value = window.location.hash.split("?")[1].split("=")[1]
-	console.log(ids.value)
-	const getlist = async()=>{
-		const res = await getPlaylistApi(ids.value)
-		console.log(res.data.playlist)
+	const comments = ref([])
+	
+	onLoad((opej)=>{
+		// 获取id
+		ids.value = opej.id
+		const getlist = async()=>{
+			const res = await getPlaylistApi(ids.value)
+			songlist.value = res.data.playlist
+		}
 		
-		songlist.value = res.data.playlist
-	}
-	getlist()
+		const comment = async(id)=>{
+			const res = await getSongListApi(ids.value)
+			console.log(res.data.comments)
+			comments.value = res.data.comments
+		
+		}
+		
+		getlist()
+		comment()
+		
+	})
+	// const open=(()=>{
+	//         // 通过组件定义的ref调用uni-popup方法 ,如果传入参数 ，type 属性将失效 ，仅支持 ['top','left','bottom','right','center']
+	//         this.$refs.popup.open('top')
+	//       })
+	
+	
+	
+	
+	
+	
+	
+
+	// ids.value = window.location.hash.split("?")[1].split("=")[1]
+	
+	
+	
 </script>
 <template>
 	<view class="songtop">
@@ -38,12 +68,10 @@
 		
 		<view class="songout">
 			<span><uni-icons type="redo" size="30"></uni-icons>{{songlist.shareCount}}</span>
-			<span><uni-icons type="chat" size="30"></uni-icons>{{songlist.commentCount}}</span>
+			<span @click="comment(songlist.id)"><uni-icons type="chat" size="30"></uni-icons>{{songlist.commentCount}}</span>
 			<span><uni-icons type="folder-add" size="30"></uni-icons>{{songlist.subscribedCount}}</span>
 		</view>
-		
 	</view>
-	
 	<view class="songlist">
 		<span>▶播放全部</span>
 		<ol>
@@ -61,6 +89,13 @@
 				
 			</li>
 		</ol>
+		
+	</view>
+	<view v-if="isVisible" class="overlay">
+		<view class="popup">
+			
+			
+		</view>
 		
 	</view>
 		

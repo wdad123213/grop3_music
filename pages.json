@@ -61,13 +61,8 @@
 		  "style" : 
 		  {
 		    "navigationBarTitleText" : "登录",
-<<<<<<< HEAD
-        "navigationBarTextStyle": "white",
-        "navigationBarBackgroundColor": "#C84341"
-=======
 			"navigationBarTextStyle": "white",
-			"navigationBarBackgroundColor": "#ff0000"
->>>>>>> main
+			"navigationBarBackgroundColor": "#C84341",
 		  }
 		},
 		{

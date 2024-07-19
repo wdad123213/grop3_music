@@ -14,9 +14,10 @@ const menuTb = ref([
 ])
 	
 function tobar(e){
-  uni.navigateTo({
-	  url:e,
-	  })
+	if (!e) return
+	uni.navigateTo({
+		  url:e,
+		  })
 }
 
 
@@ -27,7 +28,7 @@ function tobar(e){
 <template>
 	
   <view>
-	<scroll-view class="scroll-view_H" scroll-x  scroll-left="120" show-scrollbar="false" style="display: flex; align-items: center;">
+	<scroll-view class="scroll-view_H" scroll-x  scroll-left="120" show-scrollbar style=" white-space: nowrap;display: flex; align-items: center;">
 		<view  class="scroll-view-item_H"  v-for="(item,i) in menuTb" :id="i" @click="tobar(item.url)">
 			<img :src="item.img" alt="" />
 			<span>{{item.names}}</span>
@@ -46,6 +47,20 @@ function tobar(e){
 	padding-bottom: 40rpx;
 	margin-bottom: 20rpx;
 }
+.uni-scroll-view::-webkit-scrollbar {
+   display: none;
+}
+// .uni-scroll-view::-webkit-scrollbar-thumb:hover {
+//   background: transparent; /* 设置滚动条实际可拖动部分的背景色为透明 */
+// }
+
+// .uni-scroll-view::-webkit-scrollbar-track {
+//   background: transparent; /* 设置滚动条轨道的背景色为透明 */
+// }
+// .uni-scroll-view::-webkit-scrollbar-thumb:hover {
+//     background-color: #aaa;
+// }
+
 .scroll-view-item_H {
 	display: inline-block;
 	width: 140rpx;
@@ -53,14 +68,14 @@ function tobar(e){
 	line-height: 80rpx;
 	text-align: center;
 	font-size: 36rpx;
+	
 	img{
 		background: red;
 		height: 60rpx;
 		width: 60rpx;
 		border-radius: 50%;
 		display: flex;
-		margin: 20rpx 0 0 30rpx;
-		
+		margin: 20rpx 0 0 40rpx;
 		
 	}
 	span{
