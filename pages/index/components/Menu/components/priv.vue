@@ -1,6 +1,7 @@
 
 <script>
 </script>
+
 <template>
 	
 	<view class="priv">
@@ -8,5 +9,6 @@
 		
 	</view>
 </template>
-<style>
+
+<style scoped>
 </style>

@@ -1,3 +1,4 @@
+
 export const request = (url, options = {}) => {
   return new Promise((resolve, reject) => {
     uni.request({
@@ -12,6 +13,7 @@ export const request = (url, options = {}) => {
 const host = 'https://zyxcl.xyz/music/api'
 const cookies = localStorage.getItem('logined')
 
+// 轮播图
 export const getBannerApi = () => {
   return request(`${host}/banner?cookie=${cookies}`)
 }
@@ -75,4 +77,24 @@ export const getQRCheckApi = (key) => {
 // 获取登陆状态
 export const getLoginApi = () => {
   return request(`${host}/login/status?cookie=${cookies}`)
+}
+// 获取关注
+export const getUserfollApi = (id) => {
+  return request(`${host}/user/follows?cookie=${cookies}&uid=${id}`)
+}
+// 获取用户粉丝
+export const getUserfolledApi = (id) => {
+  return request(`${host}/user/followeds?cookie=${cookies}&uid=${id}`)
+}
+// 获取等级信息
+export const getUserlevelApi = (id) => {
+  return request(`${host}/user/level?cookie=${cookies}&uid=${id}`)
+}
+// 获取听歌次数
+export const getUserdetailApi = (id) => {
+  return request(`${host}/user/detail?cookie=${cookies}&uid=${id}`)
+}
+// 获取用户歌单
+export const getUserplaylistApi = (id) => {
+  return request(`${host}/user/playlist?cookie=${cookies}&uid=${id}`)
 }
