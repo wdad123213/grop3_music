@@ -16,6 +16,11 @@ export const getBannerApi = () => {
   return request(`${host}/banner?cookie=${cookies}`)
 }
 
+// 排行榜
+export const getRankApi = ()=>{
+	return request(`${host}/toplist/detail`)
+}
+
 // 推荐歌单
 export const getSystemApi = () => {
   return request(`${host}/personalized?cookie=${cookies}`)
