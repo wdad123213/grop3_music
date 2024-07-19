@@ -56,7 +56,7 @@
 		<ReMV />
 		<Station />
 		<Playsong />
-        <Bottom/>
+    <Bottom/>
 	</view>
   <view @click="sidebarFlag=false" :class="['sidebar',{ 'sidebar-move': sidebarFlag }]">
     <view class="sidebar-content">
