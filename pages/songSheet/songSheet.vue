@@ -73,22 +73,24 @@
 		</view>
 	</view>
 	<view class="songlist">
-		<span>▶播放全部</span>
-		<ol>
+		<span style="font-size: 28rpx; border-bottom: 2rpx solid #aaa; padding:30rpx 60rpx;background-color:rgba(175,147,142,.4);">▶播放全部({{songlist.tracks?.length}})</span>
+		<ul>
 			
 			<li v-for="(it,ind) in songlist.tracks">
 				<view class="index">
 					{{ ind+1 }}
 				</view>
 				<view class="con">
-					{{it.name}}
+					<view class="con-top">
+						{{it.name}}
+					</view>
 					<view class="singer">
 						<span v-for="(i,info) in it.ar">{{i.name}}<b v-if="!(info===it.ar.length-1)">/</b></span>
 					</view>
 				</view>
 				
 			</li>
-		</ol>
+		</ul>
 		
 	</view>
 	<view v-if="isVisible" class="overlay">
@@ -192,24 +194,30 @@
 	background-color: #fff;
 	position: relative;
 	flex-direction: column;
-	li{
+	
+	ul{
+		padding-left: 0rpx;
+		
+		li{
 		display: flex;
 		height: 120rpx;
 		font-size: 25rpx;
-		flex-wrap: wrap;
-		position: relative;
 		align-items: center;
+		padding: 0 60rpx;
 		border-bottom: 1px solid #aaa;
-		padding-left: 20rpx;
-		margin-top: 20rpx;
-		overflow: hidden;
-		text-overflow: ellipsis;
 		
-		// line-height: 120rpx;
+		.con-top,.singer{
+			height: 40rpx;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			-webkit-line-clamp: 1;
+		}
 		.index{
 			margin-right: 10rpx;
 		}
 	}
+	}
+	
 }
 	       
 </style>
