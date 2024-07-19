@@ -2,10 +2,10 @@
   import { ref } from "vue"
 
 const menuTb = ref([
-	{names:"每日推荐",img:"https://p1.music.126.net/4DpSgAVpJny4Ewf-Xw_WQQ==/109951163986641971.jpg",url:"/pages/index/components/Menu/components/dayNew"},
-	{names:"私人FM",img:"https://p1.music.126.net/Shi7cRT1bDhwpVDM7AOFXg==/109951165265330616.jpg",url:"/pages/index/components/Menu/components/priv"},
-	{names:"歌单",img:"https://p1.music.126.net/uG5p6CnwAHrLqOkaSeRlnA==/109951163986649164.jpg",url:"/pages/index/components/songSheet/songSheet"},
-	{names:"排行榜",img:"https://p1.music.126.net/SDFC6A3X2wzUCavYyeGIOg==/109951163986649670.jpg", url:"/pages/index/components/Menu/components/rank"},
+	{names:"每日推荐",img:"https://p1.music.126.net/4DpSgAVpJny4Ewf-Xw_WQQ==/109951163986641971.jpg"},
+	{names:"私人FM",img:"https://p1.music.126.net/Shi7cRT1bDhwpVDM7AOFXg==/109951165265330616.jpg",url:"/pages/priv/priv"},
+	{names:"歌单",img:"https://p1.music.126.net/uG5p6CnwAHrLqOkaSeRlnA==/109951163986649164.jpg"},
+	{names:"排行榜",img:"https://p1.music.126.net/SDFC6A3X2wzUCavYyeGIOg==/109951163986649670.jpg", url:"/pages/rank/rank"},
 	{names:"有声书",img:"https://p1.music.126.net/Kb4oK0m_ocs3FR3lo-r9yg==/109951167319110429.jpg"},
 	{names:"数字专辑",img:"https://p1.music.126.net/nRWhsf3P7r7eqHz-v61VBg==/109951166989045593.jpg"},
 	{names:"直播",img:"https://p1.music.126.net/2JvVZZjcjyCE72fGMsC1hg==/109951166989043011.jpg"},
@@ -14,12 +14,11 @@ const menuTb = ref([
 ])
 	
 function tobar(e){
+	if(!e) return
   uni.navigateTo({
 	  url:e,
 	  })
 }
-
-
 
 
 </script>
@@ -27,13 +26,14 @@ function tobar(e){
 <template>
 	
   <view>
+
 	<scroll-view class="scroll-view_H" scroll-x  scroll-left="120" show-scrollbar="false" style="display: flex; align-items: center;">
 		<view  class="scroll-view-item_H"  v-for="(item,i) in menuTb" :id="i" @click="tobar(item.url)">
 			<img :src="item.img" alt="" />
 			<span>{{item.names}}</span>
 		</view>
 	</scroll-view>
-    
+	
   </view>
   
 </template>

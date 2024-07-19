@@ -14,46 +14,10 @@
 			}
 		},
 		{
-			"path": "pages/index/components/Banner/Banner",
-			"style": {
-				"navigationBarTitleText": ""
-			}
-		},
-		{
 		  "path" : "pages/mine/mine",
 		  "style" : 
 		  {
 		    "navigationBarTitleText" : "个人主页"
-		  }
-		},
-		{
-		  "path" : "pages/index/components/Menu/components/dayNew",
-		  "name": "dayNew",
-		  "style" : 
-		  {
-		    "navigationBarTitleText" : "每日推荐"
-		  }
-		},
-		{
-		  "path" : "pages/index/components/Menu/components/rank",
-		  "name": "pages/index/components/Menu/components/rank",
-		  "style" : 
-		  {
-		    "navigationBarTitleText" : "排行榜",
-			"navigationBarBackgroundColor":"#f80e41",
-			"navigationBarTextStyle":"white"
-			
-		  }
-		},
-		{
-		  "path" : "pages/index/components/songSheet/songSheet",
-		  "name": "pages/index/components/songSheet/songSheet",
-		  "style" : 
-		  {
-		    "navigationBarTitleText" : "歌单",
-			"navigationBarBackgroundColor":"#f80e41",
-			"navigationBarTextStyle":"white"
-			
 		  }
 		},
 		{
@@ -66,7 +30,7 @@
 		  }
 		},
 		{
-			"path": "pages/index/components/Search/Search",
+			"path": "pages/search/search",
 			"style": {
 				"navigationBarTitleText": "搜索",
 				"navigationBarTextStyle": "white",
@@ -74,20 +38,40 @@
 			}
 		},
 		{
-			"path": "pages/index/components/Player/Player",
-			"style": {
-				"navigationBarTitleText": "播放器",
-				"navigationBarTextStyle": "white",
-				"navigationBarBackgroundColor": "#C84341"
-			}
+		  "path" : "pages/player/player",
+		  "style" : 
+		  {
+		    "navigationBarTitleText" : "播放器",
+        "navigationBarTextStyle": "white",
+        "navigationBarBackgroundColor": "#C84341"
+		  }
 		},
 		{
-			"path": "pages/index/components/Bottom/Bottom",
-			"style": {
-				"navigationBarTitleText": "底部播放缩略",
-				"navigationBarTextStyle": "white",
-				"navigationBarBackgroundColor": "#C84341"
-			}
+		  "path" : "pages/songSheet/songSheet",
+		  "style" : 
+		  {
+		    "navigationBarTitleText" : "歌单",
+        "navigationBarBackgroundColor":"#f80e41",
+        "navigationBarTextStyle":"white"
+		  }
+		},
+		{
+		  "path" : "pages/priv/priv",
+		  "style" : 
+		  {
+		    "navigationBarTitleText" : "私人",
+        "navigationBarBackgroundColor":"#f80e41",
+        "navigationBarTextStyle":"white"
+		  }
+		},
+		{
+		  "path" : "pages/rank/rank",
+		  "style" : 
+		  {
+		    "navigationBarTitleText" : "排行榜",
+        "navigationBarBackgroundColor":"#f80e41",
+        "navigationBarTextStyle":"white"
+		  }
 		}
 	],
 	"globalStyle": {

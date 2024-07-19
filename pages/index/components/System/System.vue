@@ -3,16 +3,17 @@
 	import { getSystemApi } from "../../../../servers";
 	
 	const list = ref([])
+	const arr = ref([])
 	
 	const getSystem = async () => {
 		const res = await getSystemApi()
 		list.value = res.data.result
-		// console.log(res,list.value);
+		// console.log(list.value)
 	}
 	const songApi=(id)=>{
 		console.log(id)
 		uni.navigateTo({
-			  url:`/pages/index/components/songSheet/songSheet?id=${id}`,
+			  url:`/pages/songSheet/songSheet?id=${id}`,
 			  })
 	}
 	getSystem()
