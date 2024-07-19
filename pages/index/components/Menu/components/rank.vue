@@ -8,9 +8,17 @@ const rankListUser= ref([])
 const getRank = async()=>{
 	const res = await  getRankApi()
 	rankList.value = res.data.list
+}
 
+const songApi=(id)=>{
+	console.log(id)
+	uni.navigateTo({
+		  url:`/pages/index/components/songSheet/songSheet?id=${id}`,
+		  })
+	
 }
 getRank()
+console.log(rankList)
 
 </script>
 <template>
@@ -18,7 +26,7 @@ getRank()
 		<view class="topOne">
 			官方榜
 		</view>
-		<view class="listBox" v-for="item in rankList.filter((i,index)=>index<=3)">
+		<view class="listBox" v-for="item in rankList.filter((i,index)=>index<=3)" @click="songApi(item.id)">
 			<view class="listBox-top">
 				<img :src="item.coverImgUrl" alt="" />
 				<view class="hot">
@@ -37,7 +45,7 @@ getRank()
 			其他榜单
 		</view>
 		<view class="suchbox" >
-		    <span v-for="item in rankList.filter((i,index)=>index>3)">
+		    <span v-for="item in rankList.filter((i,index)=>index>3)"  @click="songApi(item.id)">
 				<img :src="item.coverImgUrl" alt="" />
 			</span>		
 		</view>

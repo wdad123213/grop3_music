@@ -41,4 +41,9 @@ export const getStationApi = () => {
 export const getPlaysongApi = () => {
   return request(`${host}/top/playlist/highquality`)
 }
+//歌单
+export const getPlaylistApi = (id) => {
+  return request(`${host}/playlist/detail?id=${id}`)
+}
+
 

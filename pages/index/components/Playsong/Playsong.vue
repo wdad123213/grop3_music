@@ -9,6 +9,13 @@
 		list.value = res.data.playlists
 		// console.log(res,list.value);
 	}
+	const songApi=(id)=>{
+		console.log(id)
+		uni.navigateTo({
+			  url:`/pages/index/components/songSheet/songSheet?id=${id}`,
+			  })
+		
+	}
 	getPlaysong()
 	
 </script>
@@ -17,7 +24,7 @@
 	<view class="nav">
 		<view class="header">精品歌单</view>
 		<view class="main">
-			<view class="Playsong" v-for="(item,index) in list" :key="item.id">
+			<view class="Playsong" v-for="(item,index) in list" :key="item.id" @click="songApi(item.id)">
 				<view class="Playpop">
 					<img :src="item.coverImgUrl" alt=""/>
 					<view class="PlayName">{{item.name}}</view>

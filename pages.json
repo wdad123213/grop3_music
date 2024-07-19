@@ -46,6 +46,17 @@
 		  }
 		},
 		{
+		  "path" : "pages/index/components/songSheet/songSheet",
+		  "name": "pages/index/components/songSheet/songSheet",
+		  "style" : 
+		  {
+		    "navigationBarTitleText" : "歌单",
+			"navigationBarBackgroundColor":"#f80e41",
+			"navigationBarTextStyle":"white"
+			
+		  }
+		},
+		{
 		  "path" : "pages/login/login",
 		  "style" : 
 		  {

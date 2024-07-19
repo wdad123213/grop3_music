@@ -9,6 +9,12 @@
 		list.value = res.data.result
 		// console.log(res,list.value);
 	}
+	const songApi=(id)=>{
+		console.log(id)
+		uni.navigateTo({
+			  url:`/pages/index/components/songSheet/songSheet?id=${id}`,
+			  })
+	}
 	getSystem()
 </script>
 
@@ -16,7 +22,7 @@
 	<view class="nav">
 		<view class="header">推荐歌单</view>
 		<view class="main">
-			<view class="sysinfos" v-for="(item,index) in list" :key="item.id">
+			<view class="sysinfos" v-for="(item,index) in list" :key="item.id" @click="songApi(item.id)">
 				<view class="syspop">
 					<img :src="item.picUrl" alt=""/>
 					<view class="sysName">{{item.name}}</view>
