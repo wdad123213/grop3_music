@@ -7,6 +7,8 @@
   import ReMV from './components/ReMV/ReMV.vue';
   import Station from './components/Station/Station.vue';
   import Playsong from './components/Playsong/Playsong.vue';
+  import { getLoginApi } from '../../servers';
+  
   const sidebarFlag = ref(false)
 	const go = () => {
 		uni.navigateTo({
@@ -40,6 +42,7 @@
 	</view>
   <view @click="sidebarFlag=false" :class="['sidebar',{ 'sidebar-move': sidebarFlag }]">
     <view class="sidebar-content">
+      
       <button @click.stop="toLogin">去登录</button>
     </view>
   </view>
