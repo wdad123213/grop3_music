@@ -56,7 +56,10 @@
 		<ReMV />
 		<Station />
 		<Playsong />
-    <Bottom/>
+		<view class="footer">
+			 <Bottom/>
+		</view>
+   
 	</view>
   <view @click="sidebarFlag=false" :class="['sidebar',{ 'sidebar-move': sidebarFlag }]">
     <view class="sidebar-content">
@@ -70,11 +73,12 @@
   
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.app{
     display: flex;
     flex-direction: column;
     padding: 30rpx;
+	position: relative;
   }
   .header{
     display: flex;
@@ -157,5 +161,13 @@
   .sidebar-move{
     transform: translate(0);
     background: rgba(0, 0, 0, 0.5);
+  }
+  .footer{
+	  position:fixed;
+	  bottom: 100rpx;
+	  left: 0;
+	  width: 100%;
+	  height: 100rpx;
+	  background-color: #fff;
   }
 </style>
