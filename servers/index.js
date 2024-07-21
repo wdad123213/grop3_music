@@ -1,9 +1,8 @@
 
-export const request = (url, options = {}) => {
+export const request = url => {
   return new Promise((resolve, reject) => {
     uni.request({
       url,
-      ...options,
       success: resolve,
       fail: reject
     })

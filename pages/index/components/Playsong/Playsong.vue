@@ -68,4 +68,8 @@
 	.Playsong{
 		display: flex;
 	}
+	
+	.main::-webkit-scrollbar{
+		display: none;
+	}
 </style>

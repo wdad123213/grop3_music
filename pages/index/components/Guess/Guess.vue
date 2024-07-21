@@ -44,6 +44,7 @@
 		flex-wrap: wrap;
 		overflow-x: auto;
 		scrollbar-width:none;
+		
 		.guepop{
 			margin: 10rpx;
 			display: flex;
@@ -69,5 +70,8 @@
 	}
 	.guess{
 		display: flex;
+	}
+	.main::-webkit-scrollbar{
+		display: none;
 	}
 </style>
