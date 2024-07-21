@@ -42,12 +42,12 @@
 
 <template>
 	<view class="app">
-    <view class="header">
-      <view class="head-icon" @click="sidebarFlag=true"></view>
-		  <view class="head-search" @click="go">
-        <view class="head-search-icon"></view>
-        <view>搜索</view>
-		  </view>
+		<view class="header">
+			<view class="head-icon" @click="sidebarFlag=true"></view>
+			<view class="head-search" @click="go">
+					<view class="head-search-icon"></view>
+					<view>搜索</view>
+			</view>
 		</view>
 		<Banner />
 		<Menu />
@@ -71,7 +71,9 @@
 </template>
 
 <style lang="scss">
+
 	.app{
+	
     display: flex;
     flex-direction: column;
     padding: 30rpx;

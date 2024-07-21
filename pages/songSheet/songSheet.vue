@@ -8,6 +8,7 @@
 	
 	const ids = ref('')
 	const comments = ref([])
+	const overlay = ref(false)
 	
 	onLoad((opej)=>{
 		// 获取id
@@ -28,76 +29,80 @@
 		comment()
 		
 	})
-	// const open=(()=>{
-	//         // 通过组件定义的ref调用uni-popup方法 ,如果传入参数 ，type 属性将失效 ，仅支持 ['top','left','bottom','right','center']
-	//         this.$refs.popup.open('top')
-	//       })
-	
-	
-	
-	
-	
-	
-	
 
-	// ids.value = window.location.hash.split("?")[1].split("=")[1]
-	
-	
-	
+		
 </script>
 <template>
-	<view class="songtop">
-		<view class="bg" :style="{ backgroundImage: `url(${songlist.coverImgUrl})`}" >
-		  <view class="after" ></view>
+	<view :class="['song',{'hide':overlay}]" >
+		<view class="songtop">
+			<view class="bg" :style="{ backgroundImage: `url(${songlist.coverImgUrl})`}" >
+			  <view class="after" ></view>
+			</view>
+			<view class="info">
+				<image :src=songlist.coverImgUrl ></image>
+				<view class="header-right">
+				  <view class="title">{{songlist.name}}</view>
+				  <view class="creator">
+					<image src="https://p1.music.126.net/kMuXXbwHbduHpLYDmHXrlA==/109951168152833223.jpg" ></image>
+					<view class="nickname">
+					  网易云音乐
+					</view>
+				  </view>
+				</view> 
+			</view>
+			<view class="desc">
+				  {{songlist.description}}
+			</view>
+			
+			<view class="songout">
+				<span><uni-icons type="redo" size="30"></uni-icons>{{songlist.shareCount}}</span>
+				<span @click="overlay=true"><uni-icons type="chat" size="30"></uni-icons>{{songlist.commentCount}}</span>
+				<span><uni-icons type="folder-add" size="30"></uni-icons>{{songlist.subscribedCount}}</span>
+			</view>
 		</view>
-		<view class="info">
-			<image :src=songlist.coverImgUrl ></image>
-			<view class="header-right">
-			  <view class="title">{{songlist.name}}</view>
-			  <view class="creator">
-				<image src="https://p1.music.126.net/kMuXXbwHbduHpLYDmHXrlA==/109951168152833223.jpg" ></image>
-				<view class="nickname">
-				  网易云音乐
+		<view class="songlist">
+			<span style="font-size: 28rpx; border-bottom: 2rpx solid #aaa; padding:30rpx 60rpx;background-color:rgba(175,147,142,.4);">▶播放全部({{songlist.tracks?.length}})</span>
+			<view class="ul">
+				<view class="li" v-for="(it,ind) in songlist.tracks">
+					<view class="index">
+						{{ ind+1 }}
+					</view>
+					<view class="con">
+						<view class="con-top">
+							{{it.name}}
+						</view>
+						<view class="singer">
+							<span v-for="(i,info) in it.ar">{{i.name}}<b v-if="!(info===it.ar.length-1)">/</b></span>
+						</view>
+					</view>
 				</view>
-			  </view>
-			</view> 
-		</view>
-		<view class="desc">
-			  {{songlist.description}}
+			</view>
 		</view>
 		
-		<view class="songout">
-			<span><uni-icons type="redo" size="30"></uni-icons>{{songlist.shareCount}}</span>
-			<span @click="comment(songlist.id)"><uni-icons type="chat" size="30"></uni-icons>{{songlist.commentCount}}</span>
-			<span><uni-icons type="folder-add" size="30"></uni-icons>{{songlist.subscribedCount}}</span>
-		</view>
 	</view>
-	<view class="songlist">
-		<span style="font-size: 28rpx; border-bottom: 2rpx solid #aaa; padding:30rpx 60rpx;background-color:rgba(175,147,142,.4);">▶播放全部({{songlist.tracks?.length}})</span>
-		<ul>
+	<view class="overlay" v-if="overlay" >
+		<view class="mc"  @click="overlay=false">
 			
-			<li v-for="(it,ind) in songlist.tracks">
-				<view class="index">
-					{{ ind+1 }}
+			
+		</view>
+		<scroll-view class="popup" scroll-y="true" >
+			<view class="newComment">
+				<b style="color: red;padding: 0 10rpx;">|</b>最新评论
+			</view>
+
+			<view v-for="item in comments" class="userList">
+				<view class="img">
+					<img :src="item.user.avatarUrl" alt="" />
+					
 				</view>
-				<view class="con">
-					<view class="con-top">
-						{{it.name}}
-					</view>
-					<view class="singer">
-						<span v-for="(i,info) in it.ar">{{i.name}}<b v-if="!(info===it.ar.length-1)">/</b></span>
-					</view>
+				<view class="userInfor">
+					<view>{{item.user.nickname}}</view>
+					<view class="commenting">{{item.content}}</view>
+					
 				</view>
 				
-			</li>
-		</ul>
-		
-	</view>
-	<view v-if="isVisible" class="overlay">
-		<view class="popup">
-			
-			
-		</view>
+			</view>
+		</scroll-view>
 		
 	</view>
 		
@@ -107,8 +112,19 @@
 </template>
 
 <style lang="scss" scoped>
+.song{
+	height: calc(100vh - 44px); 
+	
+}
+.hide{
+	overflow: hidden;
+	
+}
 .header-right,.desc,.songout{
 	z-index: 9;
+}
+li{
+	list-style-type: none;
 }
 .songtop{
  padding: 30rpx;
@@ -195,10 +211,10 @@
 	position: relative;
 	flex-direction: column;
 	
-	ul{
+	.ul{
 		padding-left: 0rpx;
 		
-		li{
+		.li{
 		display: flex;
 		height: 120rpx;
 		font-size: 25rpx;
@@ -217,6 +233,59 @@
 		}
 	}
 	}
+	
+}
+
+.overlay{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 1000;
+	.mc{
+		width: 100%;
+		height: 40%;
+	}
+	.popup{
+		position: fixed;
+		top: 40%;
+		left: 0;
+		width: 100%;
+		height: 60%;
+		background: #fff;
+		 z-index: 1001;
+		.newComment{
+			 margin: 10rpx;
+		 }
+		.userList{
+			display: flex;
+			height: 130rpx;
+			border-bottom: 2rpx #aaa solid;
+			align-items: center;
+		
+			.img{
+			width: 50rpx;
+			height: 50rpx;
+			margin: 0 30rpx;
+			img{
+				width: 100%;
+				height: 100%;
+			}
+			}
+			.commenting{
+				color: #999999;
+				white-space: nowrap; 
+				overflow: hidden;  
+				text-overflow: ellipsis; 
+				
+			}
+		
+		}
+		
+	}
+	
 	
 }
 	       

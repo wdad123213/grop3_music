@@ -6,7 +6,7 @@
 	
 	const getReMV = async () => {
 		const res = await getReMVApi()
-		list.value = res.data.result
+		list.value = res.data.playlists
 		// console.log(res,list.value);
 	}
 	const songApi=(id)=>{
@@ -26,8 +26,8 @@
 		<view class="main">
 			<view class="reMV" v-for="(item,index) in list" :key="item.id"  @click="songApi(item.id)">
 				<view class="remvpop">
-					<img :src="item.picUrl" alt=""/>
-					<view class="remvName">{{item.copywriter}}</view>
+					<img :src="item.coverImgUrl" alt=""/>
+					<view class="remvName">{{item.name}}</view>
 				</view>
 			</view>
 		</view>

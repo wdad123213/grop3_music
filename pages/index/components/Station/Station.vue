@@ -6,8 +6,14 @@
 	
 	const getStation = async () => {
 		const res = await getStationApi()
-		list.value = res.data.result
-		// console.log(res,list.value);
+		list.value = res.data.programs
+		console.log(res,list.value);
+	}
+	const songApi=(id)=>{
+		console.log(id)
+		uni.navigateTo({
+			  url:`/pages/songSheet/songSheet?id=${id}`,
+			  })
 	}
 	getStation()
 </script>
@@ -16,10 +22,10 @@
 	<view class="nav">
 		<view class="header">专属场景歌单</view>
 		<view class="main">
-			<view class="Station" v-for="(item,index) in list" :key="item.id" >
+			<view class="Station" v-for="(item,index) in list" :key="item.id"   @click="songApi(item.id)">
 				<view class="Stapop">
-					<img :src="item.picUrl" alt=""/>
-					<view class="StaName">{{item.copywriter}}</view>
+					<img :src="item.blurCoverUrl" alt=""/>
+					<view class="StaName ">{{item.name}}</view>
 				</view>
 			</view>
 		</view>
@@ -52,7 +58,7 @@
 				-webkit-box-orient: vertical;
 				-webkit-line-clamp: 2;
 				text-overflow: ellipsis;
-				height: 80rpx;
+				height: 66rpx;
 				overflow: hidden;
 			}
 		}
