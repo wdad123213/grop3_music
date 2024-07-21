@@ -59,8 +59,11 @@
 	const searchPlay = (e) => {
 		console.log(e)
 		uni.navigateTo({
-			url: '/pages/index/components/Player/Player'
+			url: '/pages/player/player'
 		});
+	}
+	const del =()=>{
+		historyList.value=[]
 	}
 	const searchGetList = (e) => {
 		isSearching.value = true
@@ -88,7 +91,7 @@
 	<view v-if="!flag" v-for="(item,index) in searchList" :key="index" @click="searchPlay(item)">{{item.name}}</view>
 	<uni-section v-if="flag" class="mb-10" title="搜索历史" type="line" titleFontSize="30rpx">
 		<template v-slot:right>
-			<uni-icons type="trash" size="60rpx"></uni-icons>
+			<uni-icons type="trash" size="60rpx" @click="del"></uni-icons>
 		</template>
 		<view class="history">
 			<view class="history-item" @click="searchGetList(item)" v-for="(item,index) in historyList" :key="index">

@@ -2,8 +2,6 @@
   import PlayBtns from './components/PlayBtns.vue';
   
 </script>
-
-
 <template>
 	<view class="player-bg"></view>
   <view class="player">
@@ -15,6 +13,7 @@
   </view>
 </template>
 
+<style scoped>
 
 
 <style lang="scss" scoped>
@@ -51,7 +50,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  // animation: music 5s infinite linear;
 }
 .player-rotate{
   animation: music 5s infinite linear;

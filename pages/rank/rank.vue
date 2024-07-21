@@ -17,6 +17,7 @@ const songApi=(id)=>{
 		  })
 	
 }
+
 getRank()
 console.log(rankList)
 

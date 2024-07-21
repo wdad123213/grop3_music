@@ -14,10 +14,10 @@ const menuTb = ref([
 ])
 	
 function tobar(e){
-	if(!e) return
-  uni.navigateTo({
-	  url:e,
-	  })
+	if (!e) return
+	uni.navigateTo({
+		  url:e,
+		  })
 }
 
 
@@ -26,6 +26,7 @@ function tobar(e){
 <template>
 	
   <view>
+
 
 	<view class="scroll-view_H">
 		<view  class="scroll-view-item_H"  v-for="(item,i) in menuTb" :id="i" @click="tobar(item.url)">
@@ -46,6 +47,7 @@ function tobar(e){
 	text-align: center;
 	overflow-x: auto;
 }
+
 .scroll-view-item_H {
 	img{
 		width: 80rpx;

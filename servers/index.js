@@ -55,7 +55,11 @@ export const getPlaysongApi = () => {
 export const getPlaylistApi = (id) => {
   return request(`${host}/playlist/detail?id=${id}`)
 }
-
+//歌单评论
+export const getSongListApi = (id)=>{
+	return request(`${host}/comment/playlist?id=${id}`)
+	
+}
 
 // 邮箱登录
 export const emailLoginApi = ( params ) => {
@@ -77,6 +81,7 @@ export const getQRCheckApi = (key) => {
 export const getLoginApi = () => {
   return request(`${host}/login/status?cookie=${cookies}`)
 }
+
 // 获取关注
 export const getUserfollApi = (id) => {
   return request(`${host}/user/follows?cookie=${cookies}&uid=${id}`)
@@ -97,3 +102,4 @@ export const getUserdetailApi = (id) => {
 export const getUserplaylistApi = (id) => {
   return request(`${host}/user/playlist?cookie=${cookies}&uid=${id}`)
 }
+
