@@ -1,8 +1,8 @@
-<template name="BottomBar">
+<template>
 	<view class="bottom">
 		<view class="bottom-left">
-			<image src="../../../../static/images/videodisc.png" mode="" @tap="goPlay"></image>
-			<view class="aideo-info" @tap="goPlay">
+			<image src="../../../../static/images/videodisc.png" mode="" @tap="goPlay" />
+			<view class="audio-info" @tap="goPlay">
 				<view class="audio-name">
 					黄昏
 				</view>
@@ -13,34 +13,25 @@
 		</view>
 		<view class="bottom-right">
 			<view class="btn-player">
-				<text class="text-black cuIcon-playfill" @tap="goPlay"></text>
+				<text class="text-black cuIcon-playfill" @tap="goPlay" />
 			</view>
 			<view class="btn-info">
-				<text class="text-black cuIcon-list"></text>
+				<text class="text-black cuIcon-list" />
 			</view>
 		</view>
 	</view>
 </template>
+<script setup>
+	import {
+		ref
+	} from 'vue';
 
-<script>
-	export default {
-		name: "BottomBar",
-		props:{},
-		data() {
-			return{
-				
-			}
-		},
-		methods:{
-			goPlay(){
-				uni.navigateTo({
-					url: '/pages/player/player'
-				})
-			}
-		}
-	}
+	const goPlay = ref(() => {
+		uni.navigateTo({
+			url: '/pages/player/player'
+		});
+	});
 </script>
-
-<style lang=scss scoped>
-	@import url("./index.css"); 
+<style scoped>
+	@import url("./index.css");
 </style>

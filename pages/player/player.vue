@@ -1,12 +1,12 @@
 <script setup>
+import { ref, onMounted, reactive, computed } from 'vue';
+
 </script>
-
-
 <template>
-	播放
+  
 </template>
 
+<style scoped>
 
-
-<style>
 </style>
+
