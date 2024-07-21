@@ -3,7 +3,7 @@
   
 </script>
 <template>
-	<view class="player-bg"></view>
+	<view class="bg"></view>
   <view class="player">
     <view class="player-song-bg">
       <view class="player-song">
@@ -14,11 +14,11 @@
 </template>
 
 <style lang="scss" scoped>
-.player-bg{
+.bg{
   position: fixed;
   width: 100%;
   height: calc(100vh - 44px);
-  background: url(http://p1.music.126.net/i-ExArwiQfpTLmlmIWwU5Q==/109951169783068621.jpg) center ;
+  background: url(http://p1.music.126.net/i-ExArwiQfpTLmlmIWwU5Q==/109951169783068621.jpg) center;
   background-size: 100vh;
   filter: blur(20rpx) brightness(70%);
   z-index: -999;

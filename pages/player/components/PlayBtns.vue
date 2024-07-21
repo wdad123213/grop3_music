@@ -11,7 +11,7 @@
    <!-- <view class="btnBar">
       <view class="start">0:00</view> -->
       <view class="bar">
-        <slider value="0" @change="sliderChange" step="5" />
+        <slider value="0" step="5" />
       </view>
       <!-- <view class="end">0:00</view>
     </view> -->
