@@ -15,19 +15,17 @@
 	} from '../../servers';
 
 
+
 	const sidebarFlag = ref(false)
 	const loginInfo = ref(false)
 	const userInfo = ref({})
+
 
 	const go = () => {
 			uni.navigateTo({
 				url: '/pages/search/search'
 			});
 		}
-	const toLogin = () => {
-		uni.navigateTo({
-			url: '/pages/login/login'
-		})}
 	const isLogin = () => {
 		if (localStorage.getItem('logined')) {
 			loginInfo.value = false
@@ -35,6 +33,7 @@
 			loginInfo.value = true
 		}
 	}
+
 	isLogin()
 	const getUser = async () => {
 		const res = await getLoginApi()
@@ -42,7 +41,12 @@
 		userInfo.value.img = res.data.data.profile?.avatarUrl
 	}
 	getUser()
-	
+	const toLogin = () => {
+		uni.navigateTo({
+			url: '/pages/login/login'
+		});
+	}
+
 </script>
 
 <template>
@@ -62,9 +66,9 @@
 		<Station />
 		<Playsong />
 		<view class="bottom">
-			<Bottom />
+			<Bottom/>
 		</view>
-
+		
 	</view>
 
 	<view @click="sidebarFlag=false" :class="['sidebar',{ 'sidebar-move': sidebarFlag }]">
@@ -87,7 +91,6 @@
 		flex-direction: column;
 		padding: 30rpx;
 	}
-
 	.header {
 		display: flex;
 		justify-content: space-between;
@@ -159,11 +162,12 @@
 		background: rgba(0, 0, 0, 0.5);
 	}
 
-	.bottom {
-		width: 100%;
-		position: fixed;
-		bottom: 90rpx;
-		left: 0;
-		background-color: #FFFF;
+	.bottom{
+		   width: 100%;
+		   position:fixed;
+		   bottom: 90rpx;
+		   left: 0;
+		   background-color: #FFFF;
+
 	}
 </style>

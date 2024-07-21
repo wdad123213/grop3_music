@@ -13,8 +13,10 @@
 </script>
 
 <style>
+	
 	@import url("./colorui/icon.css");
 	@import url("./colorui/main.css");
+
 	page{
 		width: 100%;
 		height: 100%;

@@ -24,17 +24,7 @@
 			console.log(flag.value)
 		})
 	}
-	// const push = () => {
-	// 	console.log(searchValue.value)
-	// 	if (historyList.value.length === 0) {
-	// 		historyList.value.push(searchValue.value)
-	// 	} else {
-	// 		if (!historyList.value.find(v => v === searchValue.value)) {
-	// 			historyList.value.push(searchValue.value)
-	// 		}
-	// 	}
-	// 	console.log(historyList.value)
-	// }
+
 	const push = () => {
 		if (historyList.value.length === 0 || historyList.value[0] !== searchValue.value) {
 			historyList.value.unshift(searchValue.value)
