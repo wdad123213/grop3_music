@@ -13,9 +13,6 @@
   </view>
 </template>
 
-<style scoped>
-
-
 <style lang="scss" scoped>
 .player-bg{
   position: fixed;
