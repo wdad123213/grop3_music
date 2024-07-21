@@ -59,7 +59,7 @@
 	const searchPlay = (e) => {
 		console.log(e)
 		uni.navigateTo({
-			url: '/pages/index/components/Player/Player'
+			url: '/pages/player/player'
 		});
 	}
 	const searchGetList = (e) => {
