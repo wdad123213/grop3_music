@@ -1,5 +1,15 @@
 <script setup>
   import PlayBtns from './components/PlayBtns.vue';
+  import { onLoad } from "@dcloudio/uni-app"
+  import { ref } from "vue"
+  
+  const ids = ref("")
+  
+  onLoad((option) => {
+	  ids.value = option.id
+	  console.log(ids.value)
+  })
+  
   
 </script>
 <template>
