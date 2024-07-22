@@ -22,6 +22,7 @@ setTimeout(()=>{
   const getSon = async() => {
     console.log(props.songId)
     const res = await getSongApi(props.songId)
+    console.log(res)
     innerAudioContext.src = res.data?.data[0].url
     musicStore.curMusicSrc = res.data?.data[0].url
   }

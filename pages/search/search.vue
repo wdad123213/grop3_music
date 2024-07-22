@@ -66,6 +66,7 @@
 				})
 			}	
 		})
+		push()
 	}
 	const del = () => {
 		historyList.value = []
@@ -81,6 +82,7 @@
 			return
 		}
 		console.log('搜索输入')
+		push()
 		getList(e)
 
 	}
@@ -184,7 +186,7 @@
 	}
 
 	.history-item {
-		margin: 0 10rpx;
+		margin:  10rpx;
 		padding: 10rpx;
 		background-color: #ccc;
 		border-radius: 10rpx;

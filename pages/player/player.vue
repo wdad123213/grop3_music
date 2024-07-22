@@ -17,8 +17,8 @@ onMounted(() => {
     console.log('Received data in Player:', data);
     song.value = data
     musicStore.curMusic = data
-    imgUrl.value = data?.data.al.picUrl
-    id.value = data?.data.privilege.id
+    imgUrl.value = data.data.al.picUrl
+    id.value = data.data.id
   });
 });
 

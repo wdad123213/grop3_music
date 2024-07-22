@@ -1,4 +1,5 @@
 <script setup>
+
 	
 </script>
 
@@ -7,18 +8,10 @@
     私人
 
   </view>
+
 </template>
 
 <style scoped>
-.player {
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 
 .player-info {
@@ -54,4 +47,5 @@ text {
   margin: 0 10px;
 }
 </style>
+
 

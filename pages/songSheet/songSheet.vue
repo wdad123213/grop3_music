@@ -78,7 +78,7 @@
 				
 				<view class="li" v-for="(it,ind) in songlist.tracks" @click="tobar(it.id)">
 					<view class="index">
-						{{ ind+1 }}
+						{{ ind + 1 }}
 					</view>
 					<view class="con">
 						<view class="con-top">
@@ -86,7 +86,7 @@
 						</view>
 						<view class="singer">
 							<view v-for="(i,info) in it.ar">{{i.name}}</view>
-							<view v-if="!(info===it.ar.length-1)">/</view>
+							<view v-if="!(info===it.ar.length - 1)">/</view>
 							<image class="toimg" src="@/assets/更多.png" />
 						</view>
 					</view>

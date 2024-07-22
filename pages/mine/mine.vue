@@ -29,26 +29,35 @@
   
   const loginStatus = async() => {
   
-    const res = await getLoginApi()
-    list.value = res.data.data.profile
-    
-    const id = list.value?.userId
-    // console.log(id);
-    const res2 = await getUserfollApi(id)
-    list2.value = res2.data.follow
+	  const res = await getLoginApi()
+	  list.value = res.data.data.profile
+	  
+	  const id = list.value?.userId
+	  // console.log(id);
+	  const res2 = await getUserfollApi(id)
+	  list2.value = res2.data.follow
 
-    const res3 = await getUserfolledApi(id)
-    list3.value = res3.data.followeds
-    
-    const res4 = await getUserlevelApi(id)
-    list4.value = res4.data.data?.level
-    
-    const res5 = await getUserdetailApi(id)
-    list5.value = res5.data.listenSongs
+	  const res3 = await getUserfolledApi(id)
+	  list3.value = res3.data.followeds
+	  
+	  const res4 = await getUserlevelApi(id)
+	  list4.value = res4.data.data?.level
+	  
+	  const res5 = await getUserdetailApi(id)
+	  list5.value = res5.data.listenSongs
 
-    const res6 = await getUserplaylistApi(id)
-    list6.value = res6.data.playlist
-  }
+	  const res6 = await getUserplaylistApi(id)
+	  list6.value = res6.data.playlist
+
+  } 
+  
+	const songApi=(id)=>{
+		console.log(id)
+		uni.navigateTo({
+			  url:`/pages/songSheet/songSheet?id=${id}`,
+			  })
+	}
+	
   loginStatus()
   
 </script>
@@ -82,7 +91,7 @@
   <!-- 歌单内容 -->
   <view class="main">
 	  <!-- 歌单列表 -->
-  	<view class="list-left" v-for="(item,index) in list6" :key="index">
+  	<view class="list-left" v-for="(item,index) in list6" :key="index"  @click="songApi(item.id)">
 		<!-- 左侧图片 -->
   		<img class="list-img" :src="item.coverImgUrl" alt="" />
 		<view class="list-right">
@@ -98,6 +107,9 @@
 </template>
 
 <style lang="scss" scoped>
+	.main{
+		padding-bottom: 200rpx  !important;
+	}
 .mine{
   width: 100%;
   height: 100%;
