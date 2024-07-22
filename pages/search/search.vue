@@ -12,6 +12,7 @@
 	const historyList =ref(JSON.parse(localStorage.getItem('history')) || []);
 	const flag = ref(true)
 	const isSearching = ref(false)
+	const hotValue=ref([])
 	const getList = async (e) => {
 		console.log(e)
 		if (!isSearching.value) return;
