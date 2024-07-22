@@ -168,10 +168,6 @@
 	
 	</view>
 	
-	
-		
-		
-		
 </template>
 
 <style lang="scss" scoped>
@@ -366,24 +362,26 @@
 
 		.userList {
 			display: flex;
+			width:750rpx;
 			height: 130rpx;
+			padding-right: 40rpx;
 			border-bottom: 2rpx #aaa solid;
 			align-items: center;
-
-			.img {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			img {
 				width: 50rpx;
 				height: 50rpx;
 				margin: 0 30rpx;
-
-				img {
-					width: 100%;
-					height: 100%;
-				}
 			}
-
 			.commenting {
+				// white-space: nowrap;
+				width: 90%;
+				height: 40rpx;
 				color: #999999;
-				white-space: nowrap;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 1;
 				overflow: hidden;
 				text-overflow: ellipsis;
 
@@ -395,5 +393,12 @@
 
 
 }
+
+// .userInfor{
+// 	width: 80%;
+// 	height: 80rpx;
+// 	overflow: hidden;
+// 	text-overflow: ellipsis;
+// }
 </style>
 
