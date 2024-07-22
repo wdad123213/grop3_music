@@ -47,20 +47,22 @@
 		overflow-x: auto;
 		scrollbar-width:none;
 		.Playpop{
-			width: 260rpx;
+			width: 240rpx;
 			margin: 10rpx;
+			/* margin-bottom: 160rpx; */
 			>img{
 				border-radius: 10rpx;
 				height: 240rpx;
 				width: 240rpx;
 			}			
 			.PlayName{
+				width: 240rpx;
+				height: 60rpx;
 				font-size: 24rpx;
 				display: -webkit-box;
 				-webkit-box-orient: vertical;
 				-webkit-line-clamp: 2;
 				text-overflow: ellipsis;
-				height: 80rpx;
 				overflow: hidden;
 			}
 		}

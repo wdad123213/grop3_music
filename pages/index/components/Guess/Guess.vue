@@ -39,7 +39,7 @@
 		display: flex;
 		/* justify-content: center; */
 		flex-direction: column;
-		margin: 40rpx 0 0;
+		margin: 40rpx 0;
 		height: 350rpx;
 		flex-wrap: wrap;
 		overflow-x: auto;
@@ -58,7 +58,7 @@
 			.gueName{
 				padding-left: 20rpx;
 				width: 500rpx;
-				height: 80rpx;
+				height: 60rpx;
 				font-size: 28rpx;
 				display: -webkit-box;
 				-webkit-box-orient: vertical;
@@ -70,6 +70,8 @@
 	}
 	.guess{
 		display: flex;
+		
+		/* margin: 40rpx 0; */
 	}
 	.main::-webkit-scrollbar{
 		display: none;

@@ -47,7 +47,7 @@
 		overflow-x: auto;
 		scrollbar-width:none;
 		.remvpop{
-			width: 260rpx;
+			width: 240rpx;
 			margin: 10rpx;
 			>img{
 				border-radius: 10rpx;
@@ -56,17 +56,19 @@
 			}			
 			.remvName{
 				font-size: 24rpx;
+				width: 240rpx;
+				height: 60rpx;
 				display: -webkit-box;
 				-webkit-box-orient: vertical;
 				-webkit-line-clamp: 2;
 				text-overflow: ellipsis;
-				height: 80rpx;
 				overflow: hidden;
 			}
 		}
 	}
 	.reMV{
 		display: flex;
+		margin: 40rpx 0;
 	}
 	.main::-webkit-scrollbar{
 		display: none;

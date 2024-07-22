@@ -45,7 +45,7 @@
 		overflow-x: auto;
 		scrollbar-width:none;
 		.Stapop{
-			width: 260rpx;
+			width: 240rpx;
 			margin: 10rpx;
 			>img{
 				border-radius: 10rpx;
@@ -58,13 +58,14 @@
 				-webkit-box-orient: vertical;
 				-webkit-line-clamp: 2;
 				text-overflow: ellipsis;
-				height: 66rpx;
+				height: 60rpx;
 				overflow: hidden;
 			}
 		}
 	}
 	.Station{
 		display: flex;
+		margin: 40rpx 0;
 	}
 	.main::-webkit-scrollbar{
 		display: none;
