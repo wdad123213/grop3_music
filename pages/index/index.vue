@@ -71,7 +71,6 @@
 
 	<view @click="sidebarFlag=false" :class="['sidebar',{ 'sidebar-move': sidebarFlag }]">
 		<view class="sidebar-content">
-
 			<button @click.stop="toLogin">去登录</button>
 		</view>
 	</view>
