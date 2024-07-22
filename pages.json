@@ -27,10 +27,6 @@
 		    "navigationBarTitleText" : "登录",
 			"navigationBarTextStyle": "white",
 			"navigationBarBackgroundColor": "#C84341"
-<<<<<<< HEAD
-=======
-
->>>>>>> ma
 		  }
 		},
 		{
@@ -85,6 +81,9 @@
 		"backgroundColor": "#F8F8F8"
 	},
 	"tabBar": {
+		"height":"100rpx",
+		"fontSizefontSize":"20rpx",
+		"iconWidth":"48rpx",
 		"selectedColor": "#ff0000",
 		"list": [{
 				"pagePath": "pages/index/index",

@@ -170,7 +170,7 @@
 	.bottom {
 		width: 100%;
 		position: fixed;
-		bottom: 90rpx;
+		bottom: 100rpx;
 		left: 0;
 		background-color: #FFFF;
 	}
