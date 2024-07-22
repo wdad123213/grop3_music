@@ -97,7 +97,7 @@
 			<view class="toview"> <view class="bfbg">▶</view>播放全部({{songlist.tracks?.length}})</view>
 			<view class="ul">
 				
-				<view class="li" v-for="(it,ind) in songlist.tracks" @click="searchPlay">
+				<view class="li" v-for="(it,ind) in songlist.tracks" @click="searchPlay(it)">
 					<view class="index">
 						{{ ind+1 }}
 					</view>
