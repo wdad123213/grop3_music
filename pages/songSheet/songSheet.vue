@@ -1,6 +1,6 @@
 <script setup>
 	import { ref } from 'vue';
-	import { getPlaylistApi,getSongListApi } from "@/servers/index.js"
+	import { getPlaylistApi,getSongListApi,allSongApi,songMp3Api} from "@/servers/index.js"
 	import { onLoad } from '@dcloudio/uni-app'
 	
 	
@@ -9,6 +9,8 @@
 	
 	const ids = ref('')
 	const comments = ref([])
+	const allSong = ref([])
+	const songMp3 = ref([])
 	
 	onLoad((opej)=>{
 		// 获取id
@@ -17,18 +19,52 @@
 			const res = await getPlaylistApi(ids.value)
 			songlist.value = res.data.playlist
 		}
-		
-		const comment = async(id)=>{
+		// 用户评论
+		const comment = async()=>{
 			const res = await getSongListApi(ids.value)
-			console.log(res.data.comments)
 			comments.value = res.data.comments
 		
+		}
+		const allSong = async()=>{
+			const res = await allSongApi(ids.value)
+			allSong.value = res.data.songs
+
 		}
 		
 		getlist()
 		comment()
+		allSong()
 		
 	})
+	
+	
+
+	
+	const songCommon = (e)=>{	
+		console.log(e)
+			uni.navigateTo({
+				url: '/pages/player/player',
+				events: {
+					// 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+					acceptDataFromOpenedPage: function(e) {
+						console.log(e)
+					},
+					someEvent: function(e) {
+						console.log(e)
+					}
+	
+				},
+				success: function(res) {
+					// 通过eventChannel向被打开页面传送数据
+					res.eventChannel.emit('acceptDataFromOpenerPage', {
+						data: e
+					})
+				}
+			});
+
+		
+	}
+	
 
 	
 </script>
@@ -69,7 +105,7 @@
 			<view class="toview"> <view class="bfbg">▶</view>播放全部({{songlist.tracks?.length}})</view>
 			<view class="ul">
 				
-				<view class="li" v-for="(it,ind) in songlist.tracks">
+				<view class="li" v-for="(it,ind) in songlist.tracks" @click="songCommon(it)">
 					<view class="index">
 						{{ ind+1 }}
 					</view>
