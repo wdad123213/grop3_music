@@ -20,7 +20,7 @@
 		
 		const comment = async(id)=>{
 			const res = await getSongListApi(ids.value)
-			console.log(res.data.comments)
+			// console.log(res.data.comments)
 			comments.value = res.data.comments
 		
 		}
@@ -29,6 +29,13 @@
 		comment()
 		
 	})
+	
+	function tobar(id){
+		// console.log(id)
+		uni.navigateTo({
+			  url:`/pages/player/player?id=${id}`,
+			  })
+	}
 
 	
 </script>
@@ -69,7 +76,7 @@
 			<view class="toview"> <view class="bfbg">▶</view>播放全部({{songlist.tracks?.length}})</view>
 			<view class="ul">
 				
-				<view class="li" v-for="(it,ind) in songlist.tracks">
+				<view class="li" v-for="(it,ind) in songlist.tracks" @click="tobar(it.id)">
 					<view class="index">
 						{{ ind+1 }}
 					</view>

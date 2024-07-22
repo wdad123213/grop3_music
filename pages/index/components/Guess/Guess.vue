@@ -10,14 +10,21 @@
 		// console.log(res,list.value);
 	}
 	getGuess()
+	
+	function tobar(id){
+		// console.log(id)
+		uni.navigateTo({
+			  url:`/pages/player/player?id=${id}`,
+			  })
+	}
 </script>
 
 <template>
 	<view class="nav">
 		<view class="header">猜你喜欢的「华语」好歌</view>
 		<view class="main">
-			<view class="guess" v-for="(item,index) in list" :key="item.id" >
-				<view class="guepop">
+			<view class="guess" v-for="(item,index) in list" :key="item.id">
+				<view class="guepop" @click="tobar(item.id)">
 					<image :src="item.picUrl" alt=""/>
 					<view class="gueName">{{item.name}}</view>
 					<image src="../../../../assets/播放.png" alt="" style="width: 48rpx;height: 48rpx;"/>
