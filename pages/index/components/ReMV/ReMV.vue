@@ -7,18 +7,15 @@
 	const getReMV = async () => {
 		const res = await getReMVApi()
 		list.value = res.data.playlists
-		// console.log(res,list.value);
 	}
 	const songApi=(id)=>{
-		console.log(id)
+		// console.log(id)
 		uni.navigateTo({
 			  url:`/pages/songSheet/songSheet?id=${id}`,
 			  })
 	}
-	
 	getReMV()
 </script>
-
 
 <template>
 	<view class="nav" >
@@ -26,7 +23,7 @@
 		<view class="main">
 			<view class="reMV" v-for="(item,index) in list" :key="item.id"  @click="songApi(item.id)">
 				<view class="remvpop">
-					<img :src="item.coverImgUrl" alt=""/>
+					<image :src="item.coverImgUrl" alt=""/>
 					<view class="remvName">{{item.name}}</view>
 				</view>
 			</view>
@@ -47,26 +44,28 @@
 		overflow-x: auto;
 		scrollbar-width:none;
 		.remvpop{
-			width: 260rpx;
+			width: 240rpx;
 			margin: 10rpx;
-			>img{
+			>image{
 				border-radius: 10rpx;
 				height: 240rpx;
 				width: 240rpx;
 			}			
 			.remvName{
 				font-size: 24rpx;
+				width: 240rpx;
+				height: 60rpx;
 				display: -webkit-box;
 				-webkit-box-orient: vertical;
 				-webkit-line-clamp: 2;
 				text-overflow: ellipsis;
-				height: 80rpx;
 				overflow: hidden;
 			}
 		}
 	}
 	.reMV{
 		display: flex;
+		margin: 40rpx 0;
 	}
 	.main::-webkit-scrollbar{
 		display: none;

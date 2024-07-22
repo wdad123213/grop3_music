@@ -62,13 +62,16 @@
 		</view>
 		<Banner />
 		<Menu />
-		<System />
-		<Guess />
-		<ReMV />
-		<Station />
-		<Playsong />
-		<view class="bottom">
-			<Bottom/>
+		<view class="mains">
+			
+			<System />
+			<Guess />
+			<ReMV />
+			<Station />
+			<Playsong />
+			<view class="bottom">
+				<Bottom />
+			</view>
 		</view>
 		
 	</view>
@@ -83,12 +86,14 @@
 
 
 <style lang="scss" scoped>
-	// html{
-	// 	// height: auto;
-	// 	position: relative;
-	// }
+	
+	.mains{
+		margin-bottom: 200rpx;
+	}
+	.nav{
+		white-space: normal;
+	}
 	.app {
-		// position: relative;23
 		display: flex;
 		flex-direction: column;
 		padding: 30rpx;
