@@ -18,9 +18,9 @@
 		<view class="main">
 			<view class="guess" v-for="(item,index) in list" :key="item.id" >
 				<view class="guepop">
-					<img :src="item.picUrl" alt=""/>
+					<image :src="item.picUrl" alt=""/>
 					<view class="gueName">{{item.name}}</view>
-					<img src="../../../../assets/播放.png" alt="" style="width: 48rpx;height: 48rpx;"/>
+					<image src="../../../../assets/播放.png" alt="" style="width: 48rpx;height: 48rpx;"/>
 				</view>
 			</view>
 		</view>
@@ -50,7 +50,7 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			>img{
+			>image{
 				border-radius: 10rpx;
 				width: 90rpx;
 				height: 90rpx;

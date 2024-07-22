@@ -25,7 +25,7 @@
 		<view class="main">
 			<view class="sysinfos" v-for="(item,index) in list" :key="item.id" @click="songApi(item.id)">
 				<view class="syspop">
-					<img :src="item.picUrl" alt=""/>
+					<image :src="item.picUrl" alt=""/>
 					<view class="sysName">{{item.name}}</view>
 				</view>
 			</view>
@@ -49,7 +49,7 @@
 			width: 240rpx;
 			margin: 10rpx;
 			
-			>img{
+			>image{
 				border-radius: 10rpx;
 				height: 240rpx;
 				width: 240rpx;

@@ -24,7 +24,7 @@
 		<view class="main">
 			<view class="Station" v-for="(item,index) in list" :key="item.id"   @click="songApi(item.id)">
 				<view class="Stapop">
-					<img :src="item.blurCoverUrl" alt=""/>
+					<image :src="item.blurCoverUrl" alt=""/>
 					<view class="StaName ">{{item.name}}</view>
 				</view>
 			</view>
@@ -47,7 +47,7 @@
 		.Stapop{
 			width: 240rpx;
 			margin: 10rpx;
-			>img{
+			>image{
 				border-radius: 10rpx;
 				height: 240rpx;
 				width: 240rpx;

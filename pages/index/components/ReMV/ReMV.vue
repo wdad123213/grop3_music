@@ -23,7 +23,7 @@
 		<view class="main">
 			<view class="reMV" v-for="(item,index) in list" :key="item.id"  @click="songApi(item.id)">
 				<view class="remvpop">
-					<img :src="item.coverImgUrl" alt=""/>
+					<image :src="item.coverImgUrl" alt=""/>
 					<view class="remvName">{{item.name}}</view>
 				</view>
 			</view>
@@ -46,7 +46,7 @@
 		.remvpop{
 			width: 240rpx;
 			margin: 10rpx;
-			>img{
+			>image{
 				border-radius: 10rpx;
 				height: 240rpx;
 				width: 240rpx;

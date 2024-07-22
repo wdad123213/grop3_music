@@ -26,7 +26,7 @@
 		<view class="main">
 			<view class="Playsong" v-for="(item,index) in list" :key="item.id" @click="songApi(item.id)">
 				<view class="Playpop">
-					<img :src="item.coverImgUrl" alt=""/>
+					<image :src="item.coverImgUrl" alt=""/>
 					<view class="PlayName">{{item.name}}</view>
 				</view>
 			</view>
@@ -50,7 +50,7 @@
 			width: 240rpx;
 			margin: 10rpx;
 			/* margin-bottom: 160rpx; */
-			>img{
+			>image{
 				border-radius: 10rpx;
 				height: 240rpx;
 				width: 240rpx;
