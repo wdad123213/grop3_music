@@ -7,7 +7,6 @@
 	const getReMV = async () => {
 		const res = await getReMVApi()
 		list.value = res.data.playlists
-		// console.log(res,list.value);
 	}
 	const songApi=(id)=>{
 		console.log(id)
@@ -15,10 +14,8 @@
 			  url:`/pages/songSheet/songSheet?id=${id}`,
 			  })
 	}
-	
 	getReMV()
 </script>
-
 
 <template>
 	<view class="nav" >
