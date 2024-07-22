@@ -50,8 +50,10 @@
 		<view class="header">
 			<view class="head-icon" @click="sidebarFlag=true"></view>
 			<view class="head-search" @click="go">
+
 				<view class="head-search-icon"></view>
 				<view>搜索</view>
+
 			</view>
 		</view>
 		<Banner />
@@ -75,6 +77,7 @@
 	</view>
 
 </template>
+
 
 <style lang="scss" scoped>
 	// html{
@@ -167,3 +170,4 @@
 		background-color: #FFFF;
 	}
 </style>
+
