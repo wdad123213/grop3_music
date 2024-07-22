@@ -9,8 +9,7 @@
 	} from "../../servers";
 	const searchValue = ref('')
 	const searchList = ref([])
-	const hotValue = ref([])
-	const historyList = ref([])
+	const historyList =ref(JSON.parse(localStorage.getItem('history')) || []);
 	const flag = ref(true)
 	const isSearching = ref(false)
 	const getList = async (e) => {
@@ -19,17 +18,19 @@
 		flag.value = false
 		const res = await getSearchApi(e)
 		nextTick(() => {
-			// console.log(res.data.result?.songs)
+			console.log(res.data.result?.songs)
 			searchList.value = res.data.result?.songs
-			console.log(flag.value)
+			// console.log(flag.value)
 		})
 	}
 
 	const push = () => {
 		if (historyList.value.length === 0 || historyList.value[0] !== searchValue.value) {
 			historyList.value.unshift(searchValue.value)
+			// localStorage.setItem("history":searchValue.value)
 		}
 		historyList.value = historyList.value.filter((item, index, self) => index === self.indexOf(item));
+		localStorage.setItem("history", JSON.stringify(historyList.value));
 		console.log(historyList.value)
 	}
 	const getHotList = async (e) => {
@@ -51,25 +52,25 @@
 		uni.navigateTo({
 			url: '/pages/player/player',
 			events: {
-				// 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
 				acceptDataFromOpenedPage: function(e) {
 					console.log(e)
 				},
 				someEvent: function(e) {
 					console.log(e)
 				}
-
 			},
 			success: function(res) {
-				// 通过eventChannel向被打开页面传送数据
 				res.eventChannel.emit('acceptDataFromOpenerPage', {
 					data: e
 				})
-			}
-		});
+			}	
+		})
 	}
 	const del = () => {
 		historyList.value = []
+		if(localStorage.getItem("history")){
+			localStorage.removeItem("history");
+		}
 	}
 	const searchGetList = (e) => {
 		isSearching.value = true
