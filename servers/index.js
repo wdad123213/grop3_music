@@ -102,4 +102,12 @@ export const getUserdetailApi = (id) => {
 export const getUserplaylistApi = (id) => {
   return request(`${host}/user/playlist?cookie=${cookies}&uid=${id}`)
 }
+// 获取歌单所有歌曲
+export const allSongApi = (id) => {
+  return request(`${host}/playlist/track/all?id=${id}`)
+}
+// 获取歌曲音频
+export const songMp3Api = (id) => {
+  return request(`${host}/song/url/v1?id=${id}&level=exhigh`)
+}
 

@@ -1,4 +1,11 @@
 <script setup>
+<<<<<<< HEAD
+  
+</script>
+
+<template>
+	私人
+=======
 	
 </script>
 
@@ -7,19 +14,14 @@
     私人
 
   </view>
+>>>>>>> ac87872733ec2cbf85e2a30eb85171b15da2a903
 </template>
 
 <style scoped>
-.player {
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
+<<<<<<< HEAD
+</style>
+=======
 
 .player-info {
   margin-bottom: 20px;
@@ -55,3 +57,4 @@ text {
 }
 </style>
 
+>>>>>>> ac87872733ec2cbf85e2a30eb85171b15da2a903
