@@ -32,7 +32,7 @@
   const res = await getLoginApi()
   list.value = res.data.data.profile
   
-  const id = list.value.userId
+  const id = list.value?.userId
   // console.log(id);
   const res2 = await getUserfollApi(id)
   list2.value = res2.data.follow
@@ -41,7 +41,7 @@
   list3.value = res3.data.followeds
   
   const res4 = await getUserlevelApi(id)
-  list4.value = res4.data.data.level
+  list4.value = res4.data.data?.level
   
   const res5 = await getUserdetailApi(id)
   list5.value = res5.data.listenSongs

@@ -54,8 +54,10 @@
 		<view class="header">
 			<view class="head-icon" @click="sidebarFlag=true"></view>
 			<view class="head-search" @click="go">
+
 				<view class="head-search-icon"></view>
 				<view>搜索</view>
+
 			</view>
 		</view>
 		<Banner />
@@ -73,12 +75,12 @@
 
 	<view @click="sidebarFlag=false" :class="['sidebar',{ 'sidebar-move': sidebarFlag }]">
 		<view class="sidebar-content">
-
 			<button @click.stop="toLogin">去登录</button>
 		</view>
 	</view>
 
 </template>
+
 
 <style lang="scss" scoped>
 	// html{
@@ -161,13 +163,13 @@
 		transform: translate(0);
 		background: rgba(0, 0, 0, 0.5);
 	}
-
-	.bottom{
-		   width: 100%;
-		   position:fixed;
-		   bottom: 90rpx;
-		   left: 0;
-		   background-color: #FFFF;
+	.bottom {
+		width: 100%;
+		position: fixed;
+		bottom: 100rpx;
+		left: 0;
+		background-color: #FFFF;
 
 	}
 </style>
+
