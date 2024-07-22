@@ -58,6 +58,7 @@
 				-webkit-box-orient: vertical;
 				-webkit-line-clamp: 2;
 				text-overflow: ellipsis;
+				width: 240rpx;
 				height: 80rpx;
 				overflow: hidden;
 			}

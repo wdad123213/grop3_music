@@ -7,7 +7,8 @@
 	const getReMV = async () => {
 		const res = await getReMVApi()
 		list.value = res.data.result
-		// console.log(res,list.value);
+		console.log(res,list.value);
+
 	}
 	const songApi=(id)=>{
 		console.log(id)
