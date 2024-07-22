@@ -107,6 +107,9 @@
 </template>
 
 <style lang="scss" scoped>
+	.main{
+		padding-bottom: 200rpx  !important;
+	}
 .mine{
   width: 100%;
   height: 100%;
