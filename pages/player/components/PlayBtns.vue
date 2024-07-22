@@ -1,5 +1,94 @@
 <script setup>
+import { nextTick, ref } from 'vue'
+import { onUnload } from "@dcloudio/uni-app"
+import { getSongApi } from '../../../servers'
+import { useMusicStore } from '../../../stores/music'; 
+
+const musicStore = useMusicStore()
+
+const emits = defineEmits(['changePlay'])
+const props = defineProps(['songId'])
+
+const innerAudioContext = uni.createInnerAudioContext()
+const slidVal = ref(0)
+const slidMax = ref(0)
+const start = ref('00:00')
+const end = ref('')
+
+const state = ref(false)
+
+// 获取歌曲
+setTimeout(()=>{
+  const getSon = async() => {
+    console.log(props.songId)
+    const res = await getSongApi(props.songId)
+    console.log(res)
+    innerAudioContext.src = res.data?.data[0].url
+    musicStore.curMusicSrc = res.data?.data[0].url
+  }
+  getSon()
+})
   
+
+onUnload(() => {
+  // 销毁歌曲
+  console.log(1111)
+  innerAudioContext.destroy()
+})
+
+// 格式化日期
+const format = time => {
+    const m = zero(parseInt(time / 60));
+    const s = zero(Math.round(time % 60))
+    return `${m}:${s}`
+}
+// 补零函数
+const zero = n => n >= 10 ? n : '0' + n
+
+innerAudioContext.autoplay = true
+
+const changing = (e) => {
+  innerAudioContext.currentTime = e.detail.value / 100 * innerAudioContext.duration
+}
+
+const onplay = () => {
+  if(innerAudioContext.paused){
+    innerAudioContext.play()
+    emits('changePlay',true)
+    state.value = false
+    return
+  }
+  innerAudioContext.pause()
+  emits('changePlay',false)
+  state.value = true
+}
+
+innerAudioContext.onCanplay(() => {
+  emits('changePlay',true)
+  slidMax.value = innerAudioContext.duration
+  end.value = format(slidMax.value)
+})
+
+innerAudioContext.onPlay(() => {
+  console.log('开始播放')
+})
+
+innerAudioContext.onPause(() => {
+  console.log('暂停播放')
+})
+
+innerAudioContext.onTimeUpdate(() => {
+  slidVal.value = innerAudioContext.duration ? innerAudioContext.currentTime / innerAudioContext.duration * 100 : 0
+  start.value = format(slidVal.value)
+})
+
+
+innerAudioContext.onError((res) => {
+  console.log(res.errMsg);
+  console.log(res.errCode);
+})
+
+
 </script>
 
 <template>
@@ -8,17 +97,17 @@
 		  <view class="icon icon-heart"></view>
       <view class="icon icon-gossip"></view>
 		</view>
-   <!-- <view class="btnBar">
-      <view class="start">0:00</view> -->
+   <view class="btnBar">
+      <view class="start">{{ start }}</view>
       <view class="bar">
-        <slider value="0" step="5" />
+        <slider :value="slidVal" min="0" :max="slidMax" @changing="changing" />
       </view>
-      <!-- <view class="end">0:00</view>
-    </view> -->
+      <view class="end">{{ end }}</view>
+    </view>
     <view class="tool">
       <view class="icon icon-type"></view>
       <view class="icon icon-prev"></view>
-      <view class="icon icon-play"></view>
+      <view :class="['icon icon-play',{'icon-pause':state}]" @click="onplay" ></view>
       <view class="icon icon-next"></view>
       <view class="icon icon-list"></view>
     </view>
@@ -41,6 +130,9 @@
   }
   .top{
     justify-content: center;
+  }
+  .start, .end{
+    color: #fff;
   }
   .icon{
     width: 80rpx;
@@ -65,6 +157,10 @@
     background-size:80rpx;
   }
   .icon-play{
+    background: url('../../../assets/暂停.png');
+    background-size:80rpx;
+  }
+  .icon-pause{
     background: url('../../../assets/play.png');
     background-size:80rpx;
   }

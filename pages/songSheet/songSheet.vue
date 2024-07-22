@@ -1,6 +1,6 @@
 <script setup>
 	import { ref } from 'vue';
-	import { getPlaylistApi,getSongListApi,allSongApi,songMp3Api} from "@/servers/index.js"
+	import { getPlaylistApi,getSongListApi } from "@/servers/index.js"
 	import { onLoad } from '@dcloudio/uni-app'
 	
 	
@@ -9,8 +9,6 @@
 	
 	const ids = ref('')
 	const comments = ref([])
-	const allSong = ref([])
-	const songMp3 = ref([])
 	
 	onLoad((opej)=>{
 		// 获取id
@@ -19,52 +17,42 @@
 			const res = await getPlaylistApi(ids.value)
 			songlist.value = res.data.playlist
 		}
-		// 用户评论
-		const comment = async()=>{
+		
+		const comment = async(id)=>{
 			const res = await getSongListApi(ids.value)
+			// console.log(res.data.comments)
 			comments.value = res.data.comments
 		
-		}
-		const allSong = async()=>{
-			const res = await allSongApi(ids.value)
-			allSong.value = res.data.songs
-
 		}
 		
 		getlist()
 		comment()
-		allSong()
 		
 	})
-	
-	
-
-	
-	const songCommon = (e)=>{	
-		console.log(e)
-			uni.navigateTo({
-				url: '/pages/player/player',
-				events: {
-					// 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
-					acceptDataFromOpenedPage: function(e) {
-						console.log(e)
-					},
-					someEvent: function(e) {
-						console.log(e)
-					}
-	
-				},
-				success: function(res) {
-					// 通过eventChannel向被打开页面传送数据
-					res.eventChannel.emit('acceptDataFromOpenerPage', {
-						data: e
-					})
-				}
-			});
-
-		
-	}
-	
+  
+  const tobar = (e) => {
+    console.log(e)
+    uni.navigateTo({
+      url: '/pages/player/player',
+      events: {
+        // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+        acceptDataFromOpenedPage: function(e) {
+          console.log(e)
+        },
+        someEvent: function(e) {
+          console.log(e)
+        }
+  
+      },
+      success: function(res) {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit('acceptDataFromOpenerPage', {
+          data: e
+        })
+      }
+    });
+  }
+  
 
 	
 </script>
@@ -105,9 +93,9 @@
 			<view class="toview"> <view class="bfbg">▶</view>播放全部({{songlist.tracks?.length}})</view>
 			<view class="ul">
 				
-				<view class="li" v-for="(it,ind) in songlist.tracks" @click="songCommon(it)">
+				<view class="li" v-for="(it,ind) in songlist.tracks" @click="tobar(it)">
 					<view class="index">
-						{{ ind+1 }}
+						{{ ind + 1 }}
 					</view>
 					<view class="con">
 						<view class="con-top">
@@ -115,7 +103,7 @@
 						</view>
 						<view class="singer">
 							<view v-for="(i,info) in it.ar">{{i.name}}</view>
-							<view v-if="!(info===it.ar.length-1)">/</view>
+							<view v-if="!(info===it.ar.length - 1)">/</view>
 							<image class="toimg" src="@/assets/更多.png" />
 						</view>
 					</view>

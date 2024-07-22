@@ -11,7 +11,7 @@
 		// console.log(list.value)
 	}
 	const songApi=(id)=>{
-		console.log(id)
+		// console.log(id)
 		uni.navigateTo({
 			  url:`/pages/songSheet/songSheet?id=${id}`,
 			  })
@@ -25,7 +25,7 @@
 		<view class="main">
 			<view class="sysinfos" v-for="(item,index) in list" :key="item.id" @click="songApi(item.id)">
 				<view class="syspop">
-					<img :src="item.picUrl" alt=""/>
+					<image :src="item.picUrl" alt=""/>
 					<view class="sysName">{{item.name}}</view>
 				</view>
 			</view>
@@ -46,25 +46,30 @@
 		overflow-x: auto;
 		scrollbar-width:none;
 		.syspop{
+			width: 240rpx;
 			margin: 10rpx;
-			>img{
+			
+			>image{
 				border-radius: 10rpx;
 				height: 240rpx;
 				width: 240rpx;
 			}
 			.sysName{
 				font-size: 24rpx;
-				display: -webkit-box;
+				width: 240rpx;
+				height: 60rpx;
+			 	display: -webkit-box;
 				-webkit-box-orient: vertical;
 				-webkit-line-clamp: 2;
 				text-overflow: ellipsis;
-				height: 80rpx;
 				overflow: hidden;
+        width: 240rpx;
 			}
 		}
 	}
 	.sysinfos{
 		display: flex;
+		margin: 40rpx 0;
 	}
 	.main::-webkit-scrollbar{
 		display: none;

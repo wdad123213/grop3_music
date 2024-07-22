@@ -27,7 +27,7 @@ export const getSearchHotApi = (key) => {
 
 // 排行榜
 export const getRankApi = ()=>{
-	return request(`${host}/toplist/detail`)
+	return request(`${host}/toplist/detail?cookie=${cookies}`)
 }
 
 // 推荐歌单
@@ -111,3 +111,7 @@ export const songMp3Api = (id) => {
   return request(`${host}/song/url/v1?id=${id}&level=exhigh`)
 }
 
+// 获取单曲
+export const getSongApi = (id) => {
+  return request(`${host}/song/url/v1?id=${id}&level=exhigh&cookie=${cookies}`)
+}

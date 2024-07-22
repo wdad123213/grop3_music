@@ -15,19 +15,17 @@
 	} from '../../servers';
 
 
+
 	const sidebarFlag = ref(false)
 	const loginInfo = ref(false)
 	const userInfo = ref({})
+
 
 	const go = () => {
 			uni.navigateTo({
 				url: '/pages/search/search'
 			});
 		}
-	const toLogin = () => {
-		uni.navigateTo({
-			url: '/pages/login/login'
-		})}
 	const isLogin = () => {
 		if (localStorage.getItem('logined')) {
 			loginInfo.value = false
@@ -35,6 +33,7 @@
 			loginInfo.value = true
 		}
 	}
+
 	isLogin()
 	const getUser = async () => {
 		const res = await getLoginApi()
@@ -42,7 +41,12 @@
 		userInfo.value.img = res.data.data.profile?.avatarUrl
 	}
 	getUser()
-	
+	const toLogin = () => {
+		uni.navigateTo({
+			url: '/pages/login/login'
+		});
+	}
+
 </script>
 
 <template>
@@ -58,21 +62,27 @@
 		</view>
 		<Banner />
 		<Menu />
-		<System />
-		<Guess />
-		<ReMV />
-		<Station />
-		<Playsong />
-		<view class="bottom">
-			<Bottom />
+		<view class="mains">
+			
+			<System />
+			<Guess />
+			<ReMV />
+			<Station />
+			<Playsong />
+			<view class="bottom">
+				<Bottom />
+			</view>
 		</view>
-
+		
 	</view>
 
 	<view @click="sidebarFlag=false" :class="['sidebar',{ 'sidebar-move': sidebarFlag }]">
 		<view class="sidebar-content">
-
-			<button @click.stop="toLogin">去登录</button>
+      <button @click.stop="toLogin" v-if="loginInfo">去登录</button>
+      <view class="user" v-else>
+        <image :src="userInfo.img" mode=""></image>
+        {{userInfo.name}}
+      </view>
 		</view>
 	</view>
 
@@ -80,17 +90,18 @@
 
 
 <style lang="scss" scoped>
-	// html{
-	// 	// height: auto;
-	// 	position: relative;
-	// }
+	
+	.mains{
+		margin-bottom: 200rpx;
+	}
+	.nav{
+		white-space: normal;
+	}
 	.app {
-		// position: relative;23
 		display: flex;
 		flex-direction: column;
 		padding: 30rpx;
 	}
-
 	.header {
 		display: flex;
 		justify-content: space-between;
@@ -161,13 +172,33 @@
 		transform: translate(0);
 		background: rgba(0, 0, 0, 0.5);
 	}
-
 	.bottom {
 		width: 100%;
 		position: fixed;
-		bottom: 90rpx;
+		bottom: 100rpx;
 		left: 0;
 		background-color: #FFFF;
+
 	}
+  
+  .user{
+      position: absolute;
+      width: 40%;
+      height: 120rpx;
+      top: 90rpx;
+      left: 0;
+      font-size: 14px;
+      background-color: #ccc;
+      color: #000;
+      display: flex;
+      align-items: center;
+      image{
+        width: 100rpx;
+        height: 100rpx;
+        background: #f00;
+        border-radius: 50%;
+        margin: 10rpx;
+      }
+    }
 </style>
 
