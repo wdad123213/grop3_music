@@ -9,7 +9,6 @@
 	  const eventChannel = instance.getOpenerEventChannel();
 	  eventChannel.on('acceptDataFromOpenerPage', function(data) {
 	    console.log('Received data in Player:', data);
-	    // 处理接收到的数据
 	  });
 	});
   
