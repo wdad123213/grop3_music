@@ -1,15 +1,27 @@
 <script setup>
   import PlayBtns from './components/PlayBtns.vue';
   import { onLoad } from "@dcloudio/uni-app"
-  import { ref } from "vue"
+  import { 
+	  ref,
+	  onMounted,
+	  getCurrentInstance
+   } from "vue"
   
   const ids = ref("")
   
-  onLoad((option) => {
-	  ids.value = option.id
-	  console.log(ids.value)
-  })
+	onLoad((option) => {
+		ids.value = option.id
+		console.log(ids.value)
+	})
   
+	onMounted(() => {
+		const instance = getCurrentInstance().proxy;
+		const eventChannel = instance.getOpenerEventChannel();
+		eventChannel.on('acceptDataFromOpenerPage', function(data) {
+	    console.log('Received data in Player:', data);
+	    // 处理接收到的数据
+		});
+	});
   
 </script>
 <template>

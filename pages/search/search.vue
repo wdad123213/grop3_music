@@ -24,17 +24,7 @@
 			console.log(flag.value)
 		})
 	}
-	// const push = () => {
-	// 	console.log(searchValue.value)
-	// 	if (historyList.value.length === 0) {
-	// 		historyList.value.push(searchValue.value)
-	// 	} else {
-	// 		if (!historyList.value.find(v => v === searchValue.value)) {
-	// 			historyList.value.push(searchValue.value)
-	// 		}
-	// 	}
-	// 	console.log(historyList.value)
-	// }
+
 	const push = () => {
 		if (historyList.value.length === 0 || historyList.value[0] !== searchValue.value) {
 			historyList.value.unshift(searchValue.value)
@@ -59,16 +49,32 @@
 	const searchPlay = (e) => {
 		console.log(e)
 		uni.navigateTo({
-			url: '/pages/player/player'
+			url: '/pages/player/player',
+			events: {
+				// 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+				acceptDataFromOpenedPage: function(e) {
+					console.log(e)
+				},
+				someEvent: function(e) {
+					console.log(e)
+				}
+
+			},
+			success: function(res) {
+				// 通过eventChannel向被打开页面传送数据
+				res.eventChannel.emit('acceptDataFromOpenerPage', {
+					data: e
+				})
+			}
 		});
 	}
-	const del =()=>{
-		historyList.value=[]
+	const del = () => {
+		historyList.value = []
 	}
 	const searchGetList = (e) => {
 		isSearching.value = true
 		searchValue.value = e
-		if (searchValue.value=== '') {
+		if (searchValue.value === '') {
 			console.log(searchValue.value)
 			return
 		}
@@ -88,7 +94,10 @@
 			@cancel='exit'>
 		</uni-search-bar>
 	</uni-section>
-	<view v-if="!flag" v-for="(item,index) in searchList" :key="index" @click="searchPlay(item)">{{item.name}}</view>
+	<view v-if="!flag" v-for="(item,index) in searchList" class="search-item"
+		:style="{ animationDelay: index * 0.1 + 's' }" :key="index" @click="searchPlay(item)">
+		<text class="search-item-title">{{ item.name }}</text>
+	</view>
 	<uni-section v-if="flag" class="mb-10" title="搜索历史" type="line" titleFontSize="30rpx">
 		<template v-slot:right>
 			<uni-icons type="trash" size="60rpx" @click="del"></uni-icons>
@@ -114,19 +123,48 @@
 
 <style lang="scss" scoped>
 	.hotHistory {
-		height: 60rpx;
-		margin-left: 20rpx;
+		display: flex;
+		align-items: center;
+		padding: 10rpx 20rpx;
+		margin-bottom: 10rpx;
+		border-radius: 10rpx;
+		transition: background-color 0.3s, transform 0.2s;
+		cursor: pointer;
+	}
+
+	.hotHistory:hover {
+		background-color: #e9310c;
+		color: #ffffff;
+	}
+
+	@keyframes slideIn {
+		from {
+			transform: translateX(-100%);
+		}
+
+		to {
+			transform: translateX(0);
+		}
+	}
+
+	.hotHistory {
+		animation: slideIn 0.5s ease forwards;
+	}
+
+	.search-item,
+	.hotHistory {
+		animation-iteration-count: 1;
 	}
 
 	.search-result {
-		padding-top: 10px;
-		padding-bottom: 20px;
+		padding-top: 20rpx;
+		padding-bottom: 40rpx;
 		text-align: center;
 	}
 
 	.search-result-text {
 		text-align: center;
-		font-size: 14px;
+		font-size: 28;
 		color: #666;
 	}
 
@@ -134,7 +172,7 @@
 		/* #ifndef APP-NVUE */
 		display: block;
 		/* #endif */
-		padding: 0px;
+		padding: 0rpx;
 	}
 
 	.history {
@@ -151,6 +189,66 @@
 	}
 
 	.uni-mt-10 {
-		margin-top: 10px;
+		margin-top: 20rpx;
+	}
+
+	.search-result {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		margin-top: 40rpx;
+	}
+
+	.search-item {
+		padding: 20rpx;
+		margin-bottom: 10rpx;
+		border-radius: 10rpx;
+		background-color: #f0f0f0;
+		transition: background-color 0.3s ease;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.search-item.active {
+		background-color: #e9e9e9;
+		transform: scale(1.05);
+	}
+
+	.search-item:hover {
+		background-color: #e9310c;
+		color: #ccc;
+	}
+
+
+	.search-item-title {
+		font-size: 32rpx;
+		color: #333;
+	}
+
+	@media (max-width: 768px) {
+		.search-item {
+			padding: 16rpx;
+		}
+
+		.search-item-title {
+			font-size: 28rpx;
+		}
+	}
+
+	.search-item {
+		opacity: 0;
+		animation: fadeIn 0.5s ease forwards;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
 	}
 </style>
