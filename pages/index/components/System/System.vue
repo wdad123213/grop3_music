@@ -11,7 +11,7 @@
 		// console.log(list.value)
 	}
 	const songApi=(id)=>{
-		console.log(id)
+		// console.log(id)
 		uni.navigateTo({
 			  url:`/pages/songSheet/songSheet?id=${id}`,
 			  })
