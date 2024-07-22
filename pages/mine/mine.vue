@@ -29,26 +29,25 @@
   
   const loginStatus = async() => {
   
-  const res = await getLoginApi()
-  list.value = res.data.data.profile
-  
-  const id = list.value?.userId
-  // console.log(id);
-  const res2 = await getUserfollApi(id)
-  list2.value = res2.data.follow
+    const res = await getLoginApi()
+    list.value = res.data.data.profile
+    
+    const id = list.value?.userId
+    // console.log(id);
+    const res2 = await getUserfollApi(id)
+    list2.value = res2.data.follow
 
-  const res3 = await getUserfolledApi(id)
-  list3.value = res3.data.followeds
-  
-  const res4 = await getUserlevelApi(id)
-  list4.value = res4.data.data?.level
-  
-  const res5 = await getUserdetailApi(id)
-  list5.value = res5.data.listenSongs
+    const res3 = await getUserfolledApi(id)
+    list3.value = res3.data.followeds
+    
+    const res4 = await getUserlevelApi(id)
+    list4.value = res4.data.data?.level
+    
+    const res5 = await getUserdetailApi(id)
+    list5.value = res5.data.listenSongs
 
-  const res6 = await getUserplaylistApi(id)
-  list6.value = res6.data.playlist
-  
+    const res6 = await getUserplaylistApi(id)
+    list6.value = res6.data.playlist
   }
   loginStatus()
   

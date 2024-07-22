@@ -60,6 +60,7 @@
 				text-overflow: ellipsis;
 				height: 80rpx;
 				overflow: hidden;
+        width: 240rpx;
 			}
 		}
 	}

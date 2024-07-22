@@ -1,15 +1,20 @@
 <script setup>
-  import PlayBtns from './components/PlayBtns.vue';
+import { ref } from 'vue';
+import PlayBtns from './components/PlayBtns.vue'
   
+const isPlay = ref(false)
+const changePlay = (flag) => {
+  isPlay.value = flag
+}
 </script>
 <template>
 	<view class="bg"></view>
   <view class="player">
-    <view class="player-song-bg">
+    <view :class="['player-song-bg', {'player-rotate':isPlay}]">
       <view class="player-song">
       </view>
     </view>
-    <PlayBtns />
+    <PlayBtns @changePlay="changePlay" />
   </view>
 </template>
 
@@ -47,6 +52,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: music 5s infinite linear paused;
 }
 .player-rotate{
   animation: music 5s infinite linear;

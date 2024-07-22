@@ -1,5 +1,79 @@
 <script setup>
-  
+import { ref } from 'vue'
+import { onLoad } from "@dcloudio/uni-app"
+import { getSongApi } from '../../../servers';
+
+
+const emits = defineEmits(['changePlay'])
+const innerAudioContext = uni.createInnerAudioContext()
+const slidVal = ref(0)
+const slidMax = ref(0)
+const start = ref('00:00')
+const end = ref('')
+const id = ref('')
+onLoad((option)=>{
+  id.value = option.id
+  console.log(id.value)
+  const getSon = async() => {
+    const res = await getSongApi(id.value)
+    innerAudioContext.src = res.data.data[0].url
+  }
+  getSon()
+})
+
+// 格式化日期
+const format = time => {
+    const m = zero(parseInt(time / 60));
+    const s = zero(Math.round(time % 60))
+    return `${m}:${s}`
+}
+// 补零函数
+const zero = n => n >= 10 ? n : '0' + n
+
+innerAudioContext.autoplay = true
+
+const changing = (e) => {
+  innerAudioContext.currentTime = e.detail.value / 100 * innerAudioContext.duration
+}
+
+const onplay = () => {
+  if(innerAudioContext.paused){
+    innerAudioContext.play()
+    emits('changePlay',true)
+    return
+  }
+  innerAudioContext.pause()
+  emits('changePlay',false)
+}
+
+innerAudioContext.onCanplay(() => {
+  console.log('可以播放')
+  slidMax.value = innerAudioContext.duration
+  end.value = format(slidMax.value)
+})
+
+innerAudioContext.onPlay(() => {
+  console.log('开始播放')
+})
+
+innerAudioContext.onPause(() => {
+  console.log('暂停播放')
+})
+
+innerAudioContext.onTimeUpdate(() => {
+  console.log('音频播放进度更新')
+  slidVal.value = innerAudioContext.duration ? innerAudioContext.currentTime / innerAudioContext.duration * 100 : 0
+  start.value = format(slidVal.value)
+})
+
+
+innerAudioContext.onError((res) => {
+  console.log(res.errMsg);
+  console.log(res.errCode);
+})
+
+
+
 </script>
 
 <template>
@@ -8,17 +82,17 @@
 		  <view class="icon icon-heart"></view>
       <view class="icon icon-gossip"></view>
 		</view>
-   <!-- <view class="btnBar">
-      <view class="start">0:00</view> -->
+   <view class="btnBar">
+      <view class="start">{{start}}</view>
       <view class="bar">
-        <slider value="0" step="5" />
+        <slider :value="slidVal" min="0" :max="slidMax" @changing="changing" />
       </view>
-      <!-- <view class="end">0:00</view>
-    </view> -->
+      <view class="end">{{end}}</view>
+    </view>
     <view class="tool">
       <view class="icon icon-type"></view>
       <view class="icon icon-prev"></view>
-      <view class="icon icon-play"></view>
+      <view class="icon icon-play" @click="onplay"></view>
       <view class="icon icon-next"></view>
       <view class="icon icon-list"></view>
     </view>
@@ -41,6 +115,9 @@
   }
   .top{
     justify-content: center;
+  }
+  .start, .end{
+    color: #fff;
   }
   .icon{
     width: 80rpx;
