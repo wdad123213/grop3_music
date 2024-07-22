@@ -13,8 +13,10 @@
 </script>
 
 <style>
+	
 	@import url("./colorui/icon.css");
 	@import url("./colorui/main.css");
+
 	page{
 		width: 100%;
 		height: 100%;
@@ -27,7 +29,7 @@
 		box-sizing: border-box;
 		position: relative;
 		display: flex;
-		flex-direction: column;
+		/* flex-direction: column; */
 	}
 
 </style>

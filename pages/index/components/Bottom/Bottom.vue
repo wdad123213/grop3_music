@@ -1,8 +1,9 @@
-<template>
+
+<template name="BottomBar">
 	<view class="bottom">
 		<view class="bottom-left">
-			<image src="../../../../static/images/videodisc.png" mode="" @tap="goPlay" />
-			<view class="audio-info" @tap="goPlay">
+			<image src="../../../../static/images/videodisc.png" mode="" @tap="goPlay"></image>
+			<view class="aideo-info" @tap="goPlay">
 				<view class="audio-name">
 					黄昏
 				</view>
@@ -13,10 +14,11 @@
 		</view>
 		<view class="bottom-right">
 			<view class="btn-player">
-				<text class="text-black cuIcon-playfill" @tap="goPlay" />
+
+				<text class="text-black cuIcon-playfill" @tap="goPlay"></text>
 			</view>
 			<view class="btn-info">
-				<text class="text-black cuIcon-list" />
+				<text class="text-black cuIcon-list"></text>
 			</view>
 		</view>
 	</view>
@@ -25,7 +27,6 @@
 	import {
 		ref
 	} from 'vue';
-
 	const goPlay = ref(() => {
 		uni.navigateTo({
 			url: '/pages/player/player'

@@ -10,7 +10,7 @@
 		// console.log(res,list.value);
 	}
 	const songApi=(id)=>{
-		console.log(id)
+		// console.log(id)
 		uni.navigateTo({
 			  url:`/pages/songSheet/songSheet?id=${id}`,
 			  })
@@ -24,7 +24,7 @@
 		<view class="main">
 			<view class="Station" v-for="(item,index) in list" :key="item.id"   @click="songApi(item.id)">
 				<view class="Stapop">
-					<img :src="item.blurCoverUrl" alt=""/>
+					<image :src="item.blurCoverUrl" alt=""/>
 					<view class="StaName ">{{item.name}}</view>
 				</view>
 			</view>
@@ -45,9 +45,9 @@
 		overflow-x: auto;
 		scrollbar-width:none;
 		.Stapop{
-			width: 260rpx;
+			width: 240rpx;
 			margin: 10rpx;
-			>img{
+			>image{
 				border-radius: 10rpx;
 				height: 240rpx;
 				width: 240rpx;
@@ -58,13 +58,14 @@
 				-webkit-box-orient: vertical;
 				-webkit-line-clamp: 2;
 				text-overflow: ellipsis;
-				height: 66rpx;
+				height: 60rpx;
 				overflow: hidden;
 			}
 		}
 	}
 	.Station{
 		display: flex;
+		margin: 40rpx 0;
 	}
 	.main::-webkit-scrollbar{
 		display: none;

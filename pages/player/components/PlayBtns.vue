@@ -1,24 +1,38 @@
 <script setup>
-import { ref } from 'vue'
-import { onLoad } from "@dcloudio/uni-app"
-import { getSongApi } from '../../../servers';
+import { nextTick, ref } from 'vue'
+import { onUnload } from "@dcloudio/uni-app"
+import { getSongApi } from '../../../servers'
+import { useMusicStore } from '../../../stores/music'; 
 
+const musicStore = useMusicStore()
 
 const emits = defineEmits(['changePlay'])
+const props = defineProps(['songId'])
+
 const innerAudioContext = uni.createInnerAudioContext()
 const slidVal = ref(0)
 const slidMax = ref(0)
 const start = ref('00:00')
 const end = ref('')
-const id = ref('')
-onLoad((option)=>{
-  id.value = option.id
-  console.log(id.value)
+
+const state = ref(false)
+
+// 获取歌曲
+setTimeout(()=>{
   const getSon = async() => {
-    const res = await getSongApi(id.value)
-    innerAudioContext.src = res.data.data[0].url
+    console.log(props.songId)
+    const res = await getSongApi(props.songId)
+    innerAudioContext.src = res.data?.data[0].url
+    musicStore.curMusicSrc = res.data?.data[0].url
   }
   getSon()
+})
+  
+
+onUnload(() => {
+  // 销毁歌曲
+  console.log(1111)
+  innerAudioContext.destroy()
 })
 
 // 格式化日期
@@ -40,14 +54,16 @@ const onplay = () => {
   if(innerAudioContext.paused){
     innerAudioContext.play()
     emits('changePlay',true)
+    state.value = false
     return
   }
   innerAudioContext.pause()
   emits('changePlay',false)
+  state.value = true
 }
 
 innerAudioContext.onCanplay(() => {
-  console.log('可以播放')
+  emits('changePlay',true)
   slidMax.value = innerAudioContext.duration
   end.value = format(slidMax.value)
 })
@@ -73,7 +89,6 @@ innerAudioContext.onError((res) => {
 })
 
 
-
 </script>
 
 <template>
@@ -83,16 +98,16 @@ innerAudioContext.onError((res) => {
       <view class="icon icon-gossip"></view>
 		</view>
    <view class="btnBar">
-      <view class="start">{{start}}</view>
+      <view class="start">{{ start }}</view>
       <view class="bar">
         <slider :value="slidVal" min="0" :max="slidMax" @changing="changing" />
       </view>
-      <view class="end">{{end}}</view>
+      <view class="end">{{ end }}</view>
     </view>
     <view class="tool">
       <view class="icon icon-type"></view>
       <view class="icon icon-prev"></view>
-      <view class="icon icon-play" @click="onplay"></view>
+      <view :class="['icon icon-play',{'icon-pause':state}]" @click="onplay" ></view>
       <view class="icon icon-next"></view>
       <view class="icon icon-list"></view>
     </view>
@@ -142,6 +157,10 @@ innerAudioContext.onError((res) => {
     background-size:80rpx;
   }
   .icon-play{
+    background: url('../../../assets/暂停.png');
+    background-size:80rpx;
+  }
+  .icon-pause{
     background: url('../../../assets/play.png');
     background-size:80rpx;
   }

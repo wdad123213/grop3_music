@@ -10,17 +10,24 @@
 		// console.log(res,list.value);
 	}
 	getGuess()
+	
+	function tobar(id){
+		// console.log(id)
+		uni.navigateTo({
+			  url:`/pages/player/player?id=${id}`,
+			  })
+	}
 </script>
 
 <template>
 	<view class="nav">
 		<view class="header">猜你喜欢的「华语」好歌</view>
 		<view class="main">
-			<view class="guess" v-for="(item,index) in list" :key="item.id" >
-				<view class="guepop">
-					<img :src="item.picUrl" alt=""/>
+			<view class="guess" v-for="(item,index) in list" :key="item.id">
+				<view class="guepop" @click="tobar(item.id)">
+					<image :src="item.picUrl" alt=""/>
 					<view class="gueName">{{item.name}}</view>
-					<img src="../../../../assets/播放.png" alt="" style="width: 48rpx;height: 48rpx;"/>
+					<image src="../../../../assets/播放.png" alt="" style="width: 48rpx;height: 48rpx;"/>
 				</view>
 			</view>
 		</view>
@@ -39,7 +46,7 @@
 		display: flex;
 		/* justify-content: center; */
 		flex-direction: column;
-		margin: 40rpx 0 0;
+		margin: 40rpx 0;
 		height: 350rpx;
 		flex-wrap: wrap;
 		overflow-x: auto;
@@ -50,7 +57,7 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			>img{
+			>image{
 				border-radius: 10rpx;
 				width: 90rpx;
 				height: 90rpx;
@@ -58,7 +65,7 @@
 			.gueName{
 				padding-left: 20rpx;
 				width: 500rpx;
-				height: 80rpx;
+				height: 60rpx;
 				font-size: 28rpx;
 				display: -webkit-box;
 				-webkit-box-orient: vertical;
@@ -70,6 +77,8 @@
 	}
 	.guess{
 		display: flex;
+		
+		/* margin: 40rpx 0; */
 	}
 	.main::-webkit-scrollbar{
 		display: none;

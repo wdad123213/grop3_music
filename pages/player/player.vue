@@ -1,20 +1,43 @@
 <script setup>
-import { ref } from 'vue';
-import PlayBtns from './components/PlayBtns.vue'
   
-const isPlay = ref(false)
+import PlayBtns from './components/PlayBtns.vue'
+import {
+    ref,
+		onMounted,
+		getCurrentInstance
+	} from 'vue';
+import { useMusicStore } from '../../stores/music'
+
+const musicStore = useMusicStore()
+
+onMounted(() => {
+  const instance = getCurrentInstance().proxy;
+  const eventChannel = instance.getOpenerEventChannel();
+  eventChannel.on('acceptDataFromOpenerPage', function(data) {
+    console.log('Received data in Player:', data);
+    song.value = data
+    musicStore.curMusic = data
+    imgUrl.value = data?.data.al.picUrl
+    id.value = data?.data.privilege.id
+  });
+});
+
+const song = ref(null)
+const imgUrl = ref('')
+const id = ref('')
+const isPlay = ref(true)
 const changePlay = (flag) => {
   isPlay.value = flag
 }
 </script>
 <template>
-	<view class="bg"></view>
+	<view class="bg" :style="{ background:`url(${imgUrl}) center` }"></view>
   <view class="player">
-    <view :class="['player-song-bg', {'player-rotate':isPlay}]">
-      <view class="player-song">
+    <view :class="['player-song-bg', {'player-rotate':isPlay}]" >
+      <view class="player-song" :style="{ background:`url(${imgUrl}) center` }">
       </view>
     </view>
-    <PlayBtns @changePlay="changePlay" />
+    <PlayBtns @changePlay="changePlay" :songId="id" />
   </view>
 </template>
 
@@ -23,7 +46,6 @@ const changePlay = (flag) => {
   position: fixed;
   width: 100%;
   height: calc(100vh - 44px);
-  background: url(http://p1.music.126.net/i-ExArwiQfpTLmlmIWwU5Q==/109951169783068621.jpg) center;
   background-size: 100vh;
   filter: blur(20rpx) brightness(70%);
   z-index: -999;
@@ -52,17 +74,16 @@ const changePlay = (flag) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: music 5s infinite linear paused;
+  animation: music 7s infinite linear paused;
 }
 .player-rotate{
-  animation: music 5s infinite linear;
+  animation: music 7s infinite linear;
 }
 .player-song{
   width: 50vw;
   height: 50vw;
   background: red;
   border-radius: 50%;
-  background: url(http://p1.music.126.net/i-ExArwiQfpTLmlmIWwU5Q==/109951169783068621.jpg) center ;
   background-size: 50vw 50vw;
 }
 </style>
