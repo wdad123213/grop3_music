@@ -47,7 +47,7 @@
 		<view class="header">猜你喜欢的「华语」好歌</view>
 		<view class="main">
 			<view class="guess" v-for="(item,index) in list" :key="item.id">
-				<view class="guepop" @click="searchPlay" >
+				<view class="guepop" @click="searchPlay(item)" >
 					<image :src="item.picUrl" alt=""/>
 					<view class="gueName">{{item.name}}</view>
 					<image src="../../../../assets/播放.png" alt="" style="width: 48rpx;height: 48rpx;"/>
