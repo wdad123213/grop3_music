@@ -78,7 +78,6 @@ innerAudioContext.onPause(() => {
 })
 
 innerAudioContext.onTimeUpdate(() => {
-  console.log('音频播放进度更新')
   slidVal.value = innerAudioContext.duration ? innerAudioContext.currentTime / innerAudioContext.duration * 100 : 0
   start.value = format(slidVal.value)
 })
